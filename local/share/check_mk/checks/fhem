@@ -162,7 +162,6 @@ def check_fhem(item, params, info):
         #                      pass
         #            except:
         #                   pass
-                
 
                     try:
                         if params[eval("var_max")]:
@@ -266,7 +265,7 @@ def check_fhem(item, params, info):
 
                             if display_value != "":
                                 output.append('%s: %s' % (title, display_value))
-                  pass
+                pass
 
           except:
                 pass
@@ -277,9 +276,9 @@ def check_fhem(item, params, info):
 
           if errorlevel > 1:
                 exitcode = 2
-        elif warnlevel > 0:
+          elif warnlevel > 0:
                 exitcode = 1
-        else:
+          else:
                 exitcode = 0
 
         return exitcode, ', '.join(output), perfdata
