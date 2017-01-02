@@ -8,297 +8,297 @@ import datetime
 # ---------------------------------------------------------
 #<<<fhem>>>
 #Detected devices: Bad.Temp Dachboden.Temp Gaestezimmer.Temp Partyraum.Temp Schlafzimmer.Temp  
-#Bad.Temp				          Bad.Temp                         TYPE		            LaCrosse
-#		     2016-11-16 08:39:41  Bad.Temp		                   battery              ok
-#		     2016-11-16 08:39:41  Bad.Temp		                   dewpoint             15.1
-#		     2016-11-16 08:39:41  Bad.Temp		                   humdiff              0
-#		     2016-11-16 08:39:41  Bad.Temp		                   humidity             83
-#eg.bad.waschmaschine_pwr		  eg.bad.waschmaschine_pwr         TYPE		            Revolt
-#		     2016-11-15 16:54:48  eg.bad.waschmaschine_pwr         avgpower             263.19
-#		     2016-11-16 09:18:07  eg.bad.waschmaschine_pwr         current              0
-#		     2016-11-16 09:18:07  eg.bad.waschmaschine_pwr         energy               9.27
-#		     2016-11-16 09:18:07  eg.bad.waschmaschine_pwr         frequency            50
-#		     2016-11-16 09:18:07  eg.bad.waschmaschine_pwr         pf		            0
-#		     2016-11-16 09:18:07  eg.bad.waschmaschine_pwr         power		        0
-#		     2016-11-16 09:18:07  eg.bad.waschmaschine_pwr         state		        P:   0.0 E:   9.27 V: 226 C:   0.00 F: 50 Pf: 0.00
-#		     2016-11-16 09:18:07  eg.bad.waschmaschine_pwr         voltage              226
-#eg.wz.heizung		              eg.wz.heizung		               TYPE		            CUL_HM
-#				                  eg.wz.heizung		               model		        HM-CC-RT-DN
-#		     2016-11-15 09:46:13  eg.wz.heizung		               Activity             alive
-#		     2016-11-15 23:03:10  eg.wz.heizung		               CommandAccepted      yes
-#		     2016-11-07 06:01:06  eg.wz.heizung		               D-firmware           1.4
-#		     2016-11-07 06:01:06  eg.wz.heizung		               D-serialNr           MEQ0252852
-#		     2016-11-07 06:04:23  eg.wz.heizung		               PairedTo             0x5FF2BE
-#		     2016-11-07 06:04:23  eg.wz.heizung		               R-backOnTime         10 s
-#		     2016-11-07 06:04:23  eg.wz.heizung		               R-btnLock            on
+#Bad.Temp                                  Bad.Temp                         TYPE                 LaCrosse
+#                     2016-11-16 08:39:41  Bad.Temp                         battery              ok
+#                     2016-11-16 08:39:41  Bad.Temp                         dewpoint             15.1
+#                     2016-11-16 08:39:41  Bad.Temp                         humdiff              0
+#                     2016-11-16 08:39:41  Bad.Temp                         humidity             83
+#eg.bad.waschmaschine_pwr                  eg.bad.waschmaschine_pwr         TYPE                 Revolt
+#                     2016-11-15 16:54:48  eg.bad.waschmaschine_pwr         avgpower             263.19
+#                     2016-11-16 09:18:07  eg.bad.waschmaschine_pwr         current              0
+#                     2016-11-16 09:18:07  eg.bad.waschmaschine_pwr         energy               9.27
+#                     2016-11-16 09:18:07  eg.bad.waschmaschine_pwr         frequency            50
+#                     2016-11-16 09:18:07  eg.bad.waschmaschine_pwr         pf                   0
+#                     2016-11-16 09:18:07  eg.bad.waschmaschine_pwr         power                0
+#                     2016-11-16 09:18:07  eg.bad.waschmaschine_pwr         state                P:   0.0 E:   9.27 V: 226 C:   0.00 F: 50 Pf: 0.00
+#                     2016-11-16 09:18:07  eg.bad.waschmaschine_pwr         voltage              226
+#eg.wz.heizung                             eg.wz.heizung                    TYPE                 CUL_HM
+#                                          eg.wz.heizung                    model                HM-CC-RT-DN
+#                     2016-11-15 09:46:13  eg.wz.heizung                    Activity             alive
+#                     2016-11-15 23:03:10  eg.wz.heizung                    CommandAccepted      yes
+#                     2016-11-07 06:01:06  eg.wz.heizung                    D-firmware           1.4
+#                     2016-11-07 06:01:06  eg.wz.heizung                    D-serialNr           MEQ0252852
+#                     2016-11-07 06:04:23  eg.wz.heizung                    PairedTo             0x5FF2BE
+#                     2016-11-07 06:04:23  eg.wz.heizung                    R-backOnTime         10 s
+#                     2016-11-07 06:04:23  eg.wz.heizung                    R-btnLock            on
 ## ---------------------------------------------------------
 
 def inventory_fhem(info):
-	# Detected devices: Bad.Temp Dachboden.Temp Gaestezimmer.Temp
-	line = info[0]
-	if len(line) > 2:
-		for device in line[2:]:
-			yield device, {}
+        # Detected devices: Bad.Temp Dachboden.Temp Gaestezimmer.Temp
+        line = info[0]
+        if len(line) > 2:
+                for device in line[2:]:
+                        yield device, {}
 
 def check_fhem(item, params, info):
-	# [[u'Detected', u'fhem:', u'Bad.Temp', u'Dachboden.Temp', u'Gaestezimmer.Temp', u'Partyraum.Temp', u'Schlafzimmer.Temp'], [u'Bad.Temp', u'TYPE', u'LaCrosse'], [u'2016-07-14', u'13:15:07', u'state', u'T:', u'21.4', u'H:', u'77'], [u'2016-07-14', u'13:15:07', u'dewpoint', u'17.2'], [u'Dachboden.Temp', u'TYPE', u'LaCrosse'], [u'2016-07-14', u'13:15:10', u'state', u'T:', u'23.5', u'H:', u'53'], [u'2016-07-14', u'13:15:10', u'dewpoint', u'13.4'], [u'Gaestezimmer.Temp', u'TYPE', u'LaCrosse'], [u'2016-07-14', u'13:15:10', u'state', u'T:', u'22.8', u'H:', u'66'], [u'2016-07-14', u'13:15:10', u'dewpoint', u'16.1'], [u'Partyraum.Temp', u'TYPE', u'LaCrosse'], [u'2016-07-14', u'13:15:12', u'state', u'T:', u'23', u'H:', u'59'], [u'2016-07-14', u'13:15:12', u'dewpoint', u'14.6'], [u'Schlafzimmer.Temp', u'TYPE', u'LaCrosse'], [u'2016-07-14', u'13:15:08', u'state', u'T:', u'22.8', u'H:', u'59'], [u'2016-07-14', u'13:15:08', u'dewpoint', u'14.4']]
+        # [[u'Detected', u'fhem:', u'Bad.Temp', u'Dachboden.Temp', u'Gaestezimmer.Temp', u'Partyraum.Temp', u'Schlafzimmer.Temp'], [u'Bad.Temp', u'TYPE', u'LaCrosse'], [u'2016-07-14', u'13:15:07', u'state', u'T:', u'21.4', u'H:', u'77'], [u'2016-07-14', u'13:15:07', u'dewpoint', u'17.2'], [u'Dachboden.Temp', u'TYPE', u'LaCrosse'], [u'2016-07-14', u'13:15:10', u'state', u'T:', u'23.5', u'H:', u'53'], [u'2016-07-14', u'13:15:10', u'dewpoint', u'13.4'], [u'Gaestezimmer.Temp', u'TYPE', u'LaCrosse'], [u'2016-07-14', u'13:15:10', u'state', u'T:', u'22.8', u'H:', u'66'], [u'2016-07-14', u'13:15:10', u'dewpoint', u'16.1'], [u'Partyraum.Temp', u'TYPE', u'LaCrosse'], [u'2016-07-14', u'13:15:12', u'state', u'T:', u'23', u'H:', u'59'], [u'2016-07-14', u'13:15:12', u'dewpoint', u'14.6'], [u'Schlafzimmer.Temp', u'TYPE', u'LaCrosse'], [u'2016-07-14', u'13:15:08', u'state', u'T:', u'22.8', u'H:', u'59'], [u'2016-07-14', u'13:15:08', u'dewpoint', u'14.4']]
 
-	fwarn, fcrit = None, None
+        fwarn, fcrit = None, None
 
-	if "level_data_age" in params:
-		dage_warn, dage_crit = params["level_data_age"]
-	if "level_temp_max" in params:
-		tmax_warn, tmax_crit = params["level_temp_max"]
-	if "level_temp_min" in params:
-		tmin_warn, tmin_crit = params["level_temp_min"]
+        if "level_data_age" in params:
+                dage_warn, dage_crit = params["level_data_age"]
+        if "level_temp_max" in params:
+                tmax_warn, tmax_crit = params["level_temp_max"]
+        if "level_temp_min" in params:
+                tmin_warn, tmin_crit = params["level_temp_min"]
 
 
-	# See if any checks are diabled (set to 0)
-#	if dage_warn != None and dage_warn == 0:
-#		dage_warn = None;
-#	if dage_crit != None and dage_crit == 0:
-#		dage_crit = None;
-#	if cbwarn != None and cbwarn == 0:
-#		cbwarn = None;
-#	if cbcrit != None and cbcrit == 0:
-#		cbcrit = None;
-	
+        # See if any checks are diabled (set to 0)
+#        if dage_warn != None and dage_warn == 0:
+#                dage_warn = None;
+#        if dage_crit != None and dage_crit == 0:
+#                dage_crit = None;
+#        if cbwarn != None and cbwarn == 0:
+#                cbwarn = None;
+#        if cbcrit != None and cbcrit == 0:
+#                cbcrit = None;
+        
 
-	errorlevel, warnlevel = 0, 0
+        errorlevel, warnlevel = 0, 0
 
-	model = ""
-	output = []
-	data = {}
+        model = ""
+        output = []
+        data = {}
 
-#	## bugfix, at beginning all timestamp up-to-date 
-#	## necessary because some devices don't send all data (weather-provider has no battery)
-#	battery_timestamp, dewpoint_timespamp, state_timestamp = time.time(), time.time(), time.time()
+#        ## bugfix, at beginning all timestamp up-to-date 
+#        ## necessary because some devices don't send all data (weather-provider has no battery)
+#        battery_timestamp, dewpoint_timespamp, state_timestamp = time.time(), time.time(), time.time()
 
-	errorlevel = 0
-	ourstatus = 0
-	device = ""
-	for line in info:
-		if len(line) == 4 and line[2] == 'TYPE':
-			if line[0] == item:
-				dev_type = line[3]
-				ourstatus = 1
-			elif ourstatus == 1:
-				break
-		elif ourstatus == 1:
-#			if line[0] == model:
-#				model = line[0]
-			if len(line) > 3 and line[3] != 'null':
-				data[line[3]] = {}
-				data[line[3]]['value']=line[4]
-				data[line[3]]['time']=( "%s %s" % (line[0], line[1]))
-				data[line[3]]['channel'] = line[2]
-	
-	if ourstatus == 0:
-		return (3, "UNKNOWN - %s - %s " % (device, dewpoint))
+        errorlevel = 0
+        ourstatus = 0
+        device = ""
+        for line in info:
+                if len(line) == 4 and line[2] == 'TYPE':
+                        if line[0] == item:
+                                dev_type = line[3]
+                                ourstatus = 1
+                        elif ourstatus == 1:
+                                break
+                elif ourstatus == 1:
+#                        if line[0] == model:
+#                                model = line[0]
+                        if len(line) > 3 and line[3] != 'null':
+                                data[line[3]] = {}
+                                data[line[3]]['value']=line[4]
+                                data[line[3]]['time']=( "%s %s" % (line[0], line[1]))
+                                data[line[3]]['channel'] = line[2]
+        
+        if ourstatus == 0:
+                return (3, "UNKNOWN - %s - %s " % (device, dewpoint))
 
-	perfdata = []
+        perfdata = []
 
 # ##################################################################
 
-	## key 		=> variable_name
-	## title 	=> readable output
-	## unit		=> °C, &, V., kmh, ... (for output)
-	## channel	=> filter for channel (HomeMatic)
-	## show		=> print if no error
-	## perfd	=> print perfdata
+        ## key          => variable_name
+        ## title        => readable output
+        ## unit         => °C, &, V., kmh, ... (for output)
+        ## channel      => filter for channel (HomeMatic)
+        ## show         => print if no error
+        ## perfd        => print perfdata
         for key, title, unit, channel, show, perfd in [
-	     ##	key			 title			 unit		channel		show	perfd
-	     ##  -------	 -------		 -------	------- 	----	-----
-        ('temperature',  'temperature',  u'°C',		'',		    1,	    1),
-        ('desired-temp', 'desiredtemp',  u'°C',		'',		    1,	    1),
-		('humidity',     'humidity',     u'%',		'',		    1,      1),
-		('dewpoint',     'dewpoint',     u'°C',		'',		    1,      1),
-		('contact',      'contact',		 '',		'',		    1,      1),
-		('valveposition','valveposition',u'%',		'',		    1,      1),
-		('battery',      'battery',		 '',		'',		    1,      0),
-		('batteryLevel', 'batteryLevel', 'V',		'',		    1,      1),
-		('controlMode',  'controlMode',	 '',		'Clima',    0,      0),
-		('Activity',	 'activity',	 '',		'',		    0,      1),
-		('power',		 'power',		 'kWh',		'',		    1,      1),
-		('energy',		 'energy',		 'W',		'',		    1,	    1),
-		('voltage',		 'voltage',		 'V',		'',		    1,	    1),
-		## HomeMatic
-		('measured-temp',  'temperature',   u'°C',	'',		    1,      1),
-		('actuator',       'valveposition',	u'%',	'',		    1,      1),
-		('R-btnLock',	   'btnLock',		'',		'',		    0,	    0),
-		('R-globalBtnLock','globalBtnLock', '',     '',	        0,      0),
-		('R-modusBtnLock', 'modusBtnLock',	'',		'',		    0,	    0),
-		## MilightDevice (and others?)
-		('brightness',	   'brightness',	u'%',	'',		    1,	    1),
-		('brightness_on',  'brightness_on',	u'%',	'',     	0,      1),
-		('ct',    		   'ct'			    ,'K',   '', 	    1,      1),
-		('hsv',    		   'hsv',     		'',     '',     	0,      0),
-		('transitionInProgress','transitionInProgress', '', '',	0,      1),
-		## MiLightBridge
-		('protocol',	   'protocol',		'',	 	'',		    0,	    0),
-		('checkInterval',  'checkInterval', 's',    '',         0,      0),
-		('sendInterval',   'sendInterval',  's',    '',         0,      0),
+             ##  key                    title                   unit                channel            show        perfd
+             ##  -------                -------                 -------             -------            ----        -----
+                ('temperature',         'temperature',          u'°C',              '',                1,          1),
+                ('desired-temp',        'desiredtemp',          u'°C',              '',                1,          1),
+                ('humidity',            'humidity',             u'%',               '',                1,          1),
+                ('dewpoint',            'dewpoint',             u'°C',              '',                1,          1),
+                ('contact',             'contact',              '',                 '',                1,          1),
+                ('valveposition',       'valveposition',        u'%',               '',                1,          1),
+                ('battery',             'battery',              '',                 '',                1,          0),
+                ('batteryLevel',        'batteryLevel',         'V',                '',                1,          1),
+                ('controlMode',         'controlMode',          '',                 '',                0,          0),
+                ('Activity',            'activity',             '',                 '',                0,          1),
+                ('power',               'power',                'kWh',              '',                1,          1),
+                ('energy',              'energy',               'W',                '',                1,          1),
+                ('voltage',             'voltage',              'V',                '',                1,          1),
+                ## HomeMatic
+                ('measured-temp',       'temperature',          u'°C',              '',                1,          1),
+                ('actuator',            'valveposition',        u'%',               '',                1,          1),
+                ('R-btnLock',           'btnLock',              '',                 '',                0,          0),
+                ('R-globalBtnLock',     'globalBtnLock',        '',                 '',                0,          0),
+                ('R-modusBtnLock',      'modusBtnLock',         '',                 '',                0,          0),
+                ## MilightDevice (and others?)
+                ('brightness',          'brightness',           u'%',               '',                1,          1),
+                ('brightness_on',       'brightness_on',        u'%',               '',                0,          1),
+                ('ct',                  'ct',                   'K',                '',                1,          1),
+                ('hsv',                 'hsv',                  '',                 '',                0,          0),
+                ('transitionInProgress','transitionInProgress', '',                 '',                0,          1),
+                ## MiLightBridge
+                ('protocol',            'protocol',             '',                 '',                0,          0),
+                ('checkInterval',       'checkInterval',        's',                '',                0,          0),
+                ('sendInterval',        'sendInterval',         's',                '',                0,          0),
         ]:
-	  ## reset
-	  display_value = "" 
-	  ignoreit	= ""
-#	  var_data_age = ""
+          ## reset
+          display_value = "" 
+          ignoreit        = ""
+#          var_data_age = ""
 
 
-	  ## check if device output data (temperature, humidity, ... )
-	  try:
-		if data[key]['value']:
-		    value = data[key]['value']
+          ## check if device output data (temperature, humidity, ... )
+          try:
+                if data[key]['value']:
+                    value = data[key]['value']
 
-		    ## build dynamic variable names ...
-		    var_max = 'level_%s_max' % title
-		    var_min = 'level_%s_min' % title
-		    var_data_age = '%s_date' % title
-		    var_plain = 'var_%s' % title	## e.g. contact: open (var_plain => open)
+                    ## build dynamic variable names ...
+                    var_max = 'level_%s_max' % title
+                    var_min = 'level_%s_min' % title
+                    var_data_age = '%s_date' % title
+                    var_plain = 'var_%s' % title        ## e.g. contact: open (var_plain => open)
 
-	#	    print var_data_age
-	#            	if  params[eval("desiredtemp_date")]:
-	#			print desiredtemp_date
-	#	      	pass
-	#	    except:
-	#	   	pass
-		
+        #            print var_data_age
+        #                    if  params[eval("desiredtemp_date")]:
+        #                        print desiredtemp_date
+        #                      pass
+        #            except:
+        #                   pass
+                
 
-		    try:
-			if params[eval("var_max")]:
-				## check the difference between dewpoint and temperature
-				if key == 'dewpoint':
-				        max_warn_dewpoint, max_crit_dewpoint = params[eval("var_max")]
-				        max_warn = float(data['temperature']['value']) - max_warn_dewpoint
-				        max_crit = float( data['temperature']['value']) - max_crit_dewpoint
-				else:   
-					max_warn, max_crit = params[eval("var_max")]
-			pass
-		    except:
-			max_warn, max_crit = 0, 0
-			pass
-		    try:
-			if params[eval("var_min")]:
-				min_warn, min_crit = params[eval("var_min")]
-			pass
-		    except:
-			min_warn, min_crit = 0, 0
-			pass
-		    try:
-		        if params[eval("var_plain")]:
-				var_plain = params[eval("var_plain")]
-		        pass
-		    except:
-		        var_plain = None
-		        pass
+                    try:
+                        if params[eval("var_max")]:
+                                ## check the difference between dewpoint and temperature
+                                if key == 'dewpoint':
+                                        max_warn_dewpoint, max_crit_dewpoint = params[eval("var_max")]
+                                        max_warn = float(data['temperature']['value']) - max_warn_dewpoint
+                                        max_crit = float( data['temperature']['value']) - max_crit_dewpoint
+                                else:   
+                                        max_warn, max_crit = params[eval("var_max")]
+                        pass
+                    except:
+                        max_warn, max_crit = 0, 0
+                        pass
+                    try:
+                        if params[eval("var_min")]:
+                                min_warn, min_crit = params[eval("var_min")]
+                        pass
+                    except:
+                        min_warn, min_crit = 0, 0
+                        pass
+                    try:
+                        if params[eval("var_plain")]:
+                                var_plain = params[eval("var_plain")]
+                        pass
+                    except:
+                        var_plain = None
+                        pass
 
-		    try:
-			if eval(var_data_age) and eval(var_data_age) != "":
-				local_timestamp = time.time()
-				var_data_timestamp = time.mktime(datetime.datetime.strptime(eval(var_data_age) , "%Y-%m-%d %H:%M:%S").timetuple())
-				data_age = int( ( local_timestamp - var_data_timestamp ) / 60 )
-			pass
-		    except:
-			## bugfix, at beginning all timestamp up-to-date 
-			## necessary because some devices don't send all data (weather-provider has no battery)
-			data_age = 0
-			pass
-
-
-	#	    if data_age > dage_crit:
-	##		 print ("data_age = %s, dage_crit = %s" % (data_age, dage_crit))
-	#               	 display_value = ("data to old [" + str(data_age)  + "min] (!!)")
-	#		 errorlevel = 2
-	#	    elif data_age > dage_crit: 
-	#		 display_value = ("data to old [" + str(data_age)  + "min] (!)")
-	#		 warnlevel = 1
-	#	    else:
-
-		    if key == 'humidity' and params['var_dewpoint_override'] == 'true':
-			ignoreit = 'true'
-
-		    ## there are sometime duplicate keys on channel like controlmode in '_Clima' and '_Climate' 
-		    ## Just filter out some HomeMatic-channel
-		    if channel == '' or data[key]['channel'] == "%s_%s" % (item, channel):
-			    ## check critical level (max/min)
-			    if ( (max_crit != 0 and float(value) >= max_crit) or (min_crit != 0 and float(value) <= min_crit) ) and not ignoreit:
-				if max_crit != 0 and float(value) >= max_crit:
-					display_value = ('%s%s (warn/crit at %s%s/%s%s) (!!)' % ( value, unit, max_warn, unit, max_crit, unit))
-				elif float(value) <= min_crit:
-					display_value = ('%s%s (warn/crit at %s%s/%s%s) (!!)' % ( value, unit, min_warn, unit, min_crit, unit)) 
-				errorlevel = 2
-			    ## check warning level (max/min)
-			    elif ( (max_warn != 0 and float(value) >= max_warn) or (min_warn != 0 and float(value) <= min_warn) ) and not ignoreit:
-				if max_warn != 0 and float(value) >= max_warn:
-					display_value = ('%s%s (warn/crit at %s%s/%s%s) (!)' % ( value, unit, max_warn, unit, max_crit, unit))
-				elif float(value) <= min_warn:
-					display_value = ('%s%s (warn/crit at %s%s/%s%s) (!)' % ( value, unit, min_warn, unit, min_crit, unit))
-				warnlevel = 1
-			    elif var_plain:
-				## just alert if value not identic or ignored
-				if value == var_plain or var_plain == "ignore":
-					if show:
-						display_value = ('%s%s' % ( value, unit ))
-					if perfd:
-						perfdata.append( ( key , 1, ""  ) )
-				else:
-					display_value = ("%s (expected: %s) (!!)" % (value, var_plain))
-					errorlevel = 2
-					if perfd:
-						perfdata.append( ( key, 0, "" ) )
-			    ## define output
-			    elif show:
-				display_value = ('%s%s' % ( value, unit ))
-
-			    ## define perfdata (just add numeric values)
-			    if perfd and not var_plain:
-				perfdata.append( ( title, value, max_warn, max_crit, "", "" ) )
+                    try:
+                        if eval(var_data_age) and eval(var_data_age) != "":
+                                local_timestamp = time.time()
+                                var_data_timestamp = time.mktime(datetime.datetime.strptime(eval(var_data_age) , "%Y-%m-%d %H:%M:%S").timetuple())
+                                data_age = int( ( local_timestamp - var_data_timestamp ) / 60 )
+                        pass
+                    except:
+                        ## bugfix, at beginning all timestamp up-to-date 
+                        ## necessary because some devices don't send all data (weather-provider has no battery)
+                        data_age = 0
+                        pass
 
 
-			    ## not used (yet)
-#			    if data_age > dage_crit:
-#				 display_value += (" (data obsolet: %s min) (warn/crit at %s/%smin) (!!)" % (str(data_age), dage_warn, dage_crit))
-#				 errorlevel = 2
-#			    elif data_age > dage_warn:
-#				 display_value += (" (data obsolet: %s min) (warn/crit at %s/%smin) (!)" % (str(data_age), dage_warn, dage_crit)) 
-#				 warnlevel = 1
+        #            if data_age > dage_crit:
+        ##                 print ("data_age = %s, dage_crit = %s" % (data_age, dage_crit))
+        #                        display_value = ("data to old [" + str(data_age)  + "min] (!!)")
+        #                 errorlevel = 2
+        #            elif data_age > dage_crit: 
+        #                 display_value = ("data to old [" + str(data_age)  + "min] (!)")
+        #                 warnlevel = 1
+        #            else:
+
+                    if key == 'humidity' and params['var_dewpoint_override'] == 'true':
+                        ignoreit = 'true'
+
+                    ## there are sometime duplicate keys on channel like controlmode in '_Clima' and '_Climate' 
+                    ## Just filter out some HomeMatic-channel
+                    if channel == '' or data[key]['channel'] == "%s_%s" % (item, channel):
+                            ## check critical level (max/min)
+                            if ( (max_crit != 0 and float(value) >= max_crit) or (min_crit != 0 and float(value) <= min_crit) ) and not ignoreit:
+                                if max_crit != 0 and float(value) >= max_crit:
+                                        display_value = ('%s%s (warn/crit at %s%s/%s%s) (!!)' % ( value, unit, max_warn, unit, max_crit, unit))
+                                elif float(value) <= min_crit:
+                                        display_value = ('%s%s (warn/crit at %s%s/%s%s) (!!)' % ( value, unit, min_warn, unit, min_crit, unit)) 
+                                errorlevel = 2
+                            ## check warning level (max/min)
+                            elif ( (max_warn != 0 and float(value) >= max_warn) or (min_warn != 0 and float(value) <= min_warn) ) and not ignoreit:
+                                if max_warn != 0 and float(value) >= max_warn:
+                                        display_value = ('%s%s (warn/crit at %s%s/%s%s) (!)' % ( value, unit, max_warn, unit, max_crit, unit))
+                                elif float(value) <= min_warn:
+                                        display_value = ('%s%s (warn/crit at %s%s/%s%s) (!)' % ( value, unit, min_warn, unit, min_crit, unit))
+                                warnlevel = 1
+                            elif var_plain:
+                                ## just alert if value not identic or ignored
+                                if value == var_plain or var_plain == "ignore":
+                                        if show:
+                                                display_value = ('%s%s' % ( value, unit ))
+                                        if perfd:
+                                                perfdata.append( ( key , 1, ""  ) )
+                                else:
+                                        display_value = ("%s (expected: %s) (!!)" % (value, var_plain))
+                                        errorlevel = 2
+                                        if perfd:
+                                                perfdata.append( ( key, 0, "" ) )
+                            ## define output
+                            elif show:
+                                display_value = ('%s%s' % ( value, unit ))
+
+                            ## define perfdata (just add numeric values)
+                            if perfd and not var_plain:
+                                perfdata.append( ( title, value, max_warn, max_crit, "", "" ) )
 
 
-			    if display_value != "":
-				output.append('%s: %s' % (title, display_value))
-	  	pass
+                            ## not used (yet)
+#                            if data_age > dage_crit:
+#                                 display_value += (" (data obsolet: %s min) (warn/crit at %s/%smin) (!!)" % (str(data_age), dage_warn, dage_crit))
+#                                 errorlevel = 2
+#                            elif data_age > dage_warn:
+#                                 display_value += (" (data obsolet: %s min) (warn/crit at %s/%smin) (!)" % (str(data_age), dage_warn, dage_crit)) 
+#                                 warnlevel = 1
 
-	  except:
-		pass
+
+                            if display_value != "":
+                                output.append('%s: %s' % (title, display_value))
+                  pass
+
+          except:
+                pass
 
 
 
 # ##################################################################
 
-  	if errorlevel > 1:
-		exitcode = 2
-	elif warnlevel > 0:
-		exitcode = 1
-	else:
-		exitcode = 0
+          if errorlevel > 1:
+                exitcode = 2
+        elif warnlevel > 0:
+                exitcode = 1
+        else:
+                exitcode = 0
 
-	return exitcode, ', '.join(output), perfdata
+        return exitcode, ', '.join(output), perfdata
 
 
 factory_settings["fhem_default_params"] = {
-	"level_data_age"    	: (30, 90), 	# warn/crit for data age (min)
-	"level_temperature_max"	: (26, 30), 	# warn/crit for max. temperature
-    "level_temperature_min"	: (15, 12), 	# warn/crit for min. temperature
-	"level_humidity_max"  	: (70, 80), 	# warn/crit for max. humidity
-	"level_humidity_min"  	: (50, 45), 	# warn/crit for min. humidity
-	"level_dewpoint_max"	: (3, 1),   	# warn/crit for diff to temperatur (exp. 17°C (dewp) vs 20°C(temp))
-    "level_batteryLevel_min": (2.1, 2.3), 	# warn/crit for max. temperature
-	"var_activity"		    : ("alive"), 	# default for alive
-	"var_contact"	    	: ("ignore"), 	# default for contact
-	"var_dewpoint_override"	: ("true"),	# don't alert humidity if dewpoint given
-	"var_btnLock"		    : ("ignore"),	# simple button lock
-	"var_globalBtnLock"   	: ("ignore"),   # full button lock
-	"var_modusBtnLock"    	: ("ignore"),   # modus button lock
+        "level_data_age"               : (30, 90),         # warn/crit for data age (min)
+        "level_temperature_max"        : (26, 30),         # warn/crit for max. temperature
+        "level_temperature_min"        : (15, 12),         # warn/crit for min. temperature
+        "level_humidity_max"           : (70, 80),         # warn/crit for max. humidity
+        "level_humidity_min"           : (50, 45),         # warn/crit for min. humidity
+        "level_dewpoint_max"           : (3, 1),           # warn/crit for diff to temperatur (exp. 17°C (dewp) vs 20°C(temp))
+        "level_batteryLevel_min"       : (2.1, 2.3),       # warn/crit for max. temperature
+        "var_activity"                 : ("alive"),        # default for alive
+        "var_contact"                  : ("ignore"),       # default for contact
+        "var_dewpoint_override"        : ("true"),         # don't alert humidity if dewpoint given
+        "var_btnLock"                  : ("ignore"),       # simple button lock
+        "var_globalBtnLock"            : ("ignore"),       # full button lock
+        "var_modusBtnLock"             : ("ignore"),       # modus button lock
 }
 
 check_info['fhem'] = {
@@ -309,3 +309,4 @@ check_info['fhem'] = {
     "group"                   : "fhem",
     "default_levels_variable" : "fhem_default_params",
 }
+

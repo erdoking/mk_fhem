@@ -53,10 +53,10 @@ if (isset($fhem_defines['temperature']) && isset($fhem_defines['humidity']) ) {
    $ds_name[] = 'temperature';
    $opt[] = $defopt . "--title \"Temperature + Humidity\"";
    $def[] = ""
-        . fhem_area("humidity",    	"00bfff", "Humidity",       "%% ", FALSE)
-        . fhem_area("temperature", 	"80ff40", "Temperature",    "°C",  FALSE)
-        . fhem_line("desiredtemp", 	"408f20", "Desired temp",   "°C",  FALSE)
-        . fhem_area("dewpoint",    	"B40404", "Dewpoint",       "°C",  FALSE)  
+        . fhem_area("humidity",         "00bfff", "Humidity",       "%% ", FALSE)
+        . fhem_area("temperature",      "80ff40", "Temperature",    "°C",  FALSE)
+        . fhem_line("desiredtemp",      "408f20", "Desired temp",   "°C",  FALSE)
+        . fhem_area("dewpoint",         "B40404", "Dewpoint",       "°C",  FALSE)  
         . fhem_line("valveposition",    "00bfff", "Valve position", "%% ",  FALSE)
         ;
 }
@@ -78,9 +78,9 @@ if (isset($fhem_defines['temperature']) ) {
 #if (isset($fhem_defines['valveposition']) ) {
 #   $opt[] = $defopt . "--title \"Valveposition\"";
 #   $def[] = ""
-#        . fhem_area("temperature", 	"80ff40", "Temperature",    "°C",  FALSE)
-#        . fhem_area("desiredtemp", 	"408f20", "Desired temp",   "°C",  FALSE)
-#        . fhem_line("valveposition",   	"00bfff", "Valve Position", "%% ",  FALSE)
+#        . fhem_area("temperature",     "80ff40", "Temperature",    "°C",  FALSE)
+#        . fhem_area("desiredtemp",     "408f20", "Desired temp",   "°C",  FALSE)
+#        . fhem_line("valveposition",   "00bfff", "Valve Position", "%% ",  FALSE)
 #        ;
 #}
 
@@ -121,7 +121,7 @@ if (isset($fhem_defines['ct']) ) {
    $ds_name[] = 'ct';
    $opt[] = $defopt . "--title \"Color temperature (ct)\"";
    $def[] = ""
-        . fhem_curve("LINE2",	"ct",   "ff4500", "Color temperature (ct)", "K",  FALSE)
+        . fhem_curve("LINE2", "ct", "ff4500", "Color temperature (ct)", "K",  FALSE)
         ;
 }
 

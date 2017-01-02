@@ -14,7 +14,7 @@ register_check_parameters(
             elements = [
                 ( "level_temperature_max",
                   Tuple(
-		      help = _("You can adjust the levels before this service goes into warning/critical. Set to 1000 to disable."),
+                      help = _("You can adjust the levels before this service goes into warning/critical. Set to 1000 to disable."),
                       title = _("Upper Temperature Levels"),
                       elements = [
                           Integer(title = _("Warning at"), unit = u"°C", default_value = 26),
@@ -24,7 +24,7 @@ register_check_parameters(
                 ( "level_temperature_min",
                   Tuple(
                       title = _("Lower Temperature Levels"),
-		      help = _("You can adjust the levels before this service goes into warning/critical. Set to -1000 to disable."),
+                      help = _("You can adjust the levels before this service goes into warning/critical. Set to -1000 to disable."),
                       elements = [
                           Integer(title = _("Warning below"), unit = u"°C", default_value = 0),
                           Integer(title = _("Critical below"), unit = u"°C", default_value = -10),
@@ -60,7 +60,7 @@ register_check_parameters(
                 ( "level_data_age",
                   Tuple(
                       title = _("Time left until data becoming obsolet."),
-		      help = _("Time before data becoming obsolete. Set to 0 to disable."),
+                      help = _("Time before data becoming obsolete. Set to 0 to disable."),
                       elements = [
                           Integer(title = _("Warning older than"), unit = "minutes", default_value = 30),
                           Integer(title = _("Critical older than"), unit = "minutes", default_value = 90),
@@ -77,17 +77,17 @@ register_check_parameters(
                 )),
 
                 ("var_controlMode", 
-		 Alternative(
+                 Alternative(
                     title = _('Control Mode'),
                     style = "dropdown",
                     allow_empty = False,
-		    help = _("Check current control mode. (default: ignore)"),
-		    elements = [
-			FixedValue(
-			    'auto',
+                    help = _("Check current control mode. (default: ignore)"),
+                    elements = [
+                        FixedValue(
+                            'auto',
                             totext = "auto",
                             title = _("auto"),
-			),
+                        ),
                         FixedValue(
                             'manual',
                             totext = "manual",
@@ -114,10 +114,10 @@ register_check_parameters(
                             label = _("custom:"),
                             size = 50,
                         ),
-		   ]
-		)),
-		("var_alive",
-		 Alternative(
+                   ]
+                )),
+                ("var_alive",
+                 Alternative(
                     title = _('Alive state'),
                     style = "dropdown",
                     allow_empty = False,
@@ -240,7 +240,7 @@ register_check_parameters(
 
                 )),
 
-	    ],
+            ],
 #                optional_keys = False,
         ),
         forth = lambda v: type(v) == tuple and { "levels" : v } or v,
