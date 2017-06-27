@@ -117,7 +117,7 @@ def check_fhem(item, params, info):
                 ('valveposition',       'valveposition',        u'%',               '',                1,          1),
                 ('battery',             'battery',              '',                 '',                1,          0),
                 ('batteryLevel',        'batteryLevel',         'V',                '',                1,          1),
-                ('controlMode',         'controlMode',          '',                 '',                0,          0),
+                ('controlMode',         'controlMode',          '',                 'Clima',           0,          0),
                 ('Activity',            'activity',             '',                 '',                0,          1),
                 ('power',               'power',                'kWh',              '',                1,          1),
                 ('energy',              'energy',               'W',                '',                1,          1),
