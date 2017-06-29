@@ -75,6 +75,54 @@ register_check_parameters(
                           Percentage(title = _("Critical at"), unit = "V", default_value = 2.1),
                       ]
                 )),
+                ( "level_download_min",
+                  Tuple(
+                      title = _("Level for speedtest download "),
+                      help = _("You can adjust the levels before this service goes into warning/critical. Set to 0 to disable."),
+                      elements = [
+                          Percentage(title = _("Warning at"), unit = "Mbit/s", default_value = 10),
+                          Percentage(title = _("Critical at"), unit = "Mbit/s", default_value = 8),
+                      ]
+                )),
+                ( "level_upload_min",
+                  Tuple(
+                      title = _("Level for speedtest upload"),
+                      help = _("You can adjust the levels before this service goes into warning/critical. Set to 0 to disable."),
+                      elements = [
+                          Percentage(title = _("Warning at"), unit = "Mbit/s", default_value = 1.5),
+                          Percentage(title = _("Critical at"), unit = "Mbit/s", default_value = 1),
+                      ]
+                )),
+                ( "level_ping",
+                  Tuple(
+                      title = _("Level for speedtest ping"),
+                      help = _("You can adjust the levels before this service goes into warning/critical. Set to 0 to disable."),
+                      elements = [  
+                          Percentage(title = _("Warning at"), unit = "ms", default_value = 100),
+                          Percentage(title = _("Critical at"), unit = "ms", default_value = 150),
+                      ]
+                )), 
+               ("var_state",
+                 Alternative(
+                    title = _('state'),
+                    style = "dropdown",
+                    allow_empty = False,
+                    help = _("Check state of reading 'state' (default: ignore) "),
+                    elements = [
+                        FixedValue(
+                            'ok',
+                            totext = "ok",
+                            title = _("ok"),
+                        ),
+                        TextAscii(
+                            title = _("custom"),
+                            label = _("custom:"),
+                            size = 50,
+                        ),
+                   ]
+
+                )),
+
 
                 ("var_controlMode", 
                  Alternative(

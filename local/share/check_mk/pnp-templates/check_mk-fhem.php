@@ -125,6 +125,25 @@ if (isset($fhem_defines['ct']) ) {
         ;
 }
 
+# 7. Speedtest (down-/upload)
+if (isset($fhem_defines['download']) ) {
+   $ds_name[] = 'speedtest';
+   $opt[] = $defopt . "--title \"Speedtest\"";
+   $def[] = ""
+        . fhem_area("download",         "00ffc0", "Download",       "Mbit/s",  FALSE)
+        . fhem_area("upload",           "00c0ff", "Upload",         "Mbit/s",  FALSE)
+        ;
+}
+
+# 7. Speedtest (ping)
+if (isset($fhem_defines['ping']) ) {
+   $ds_name[] = 'speedtest_ping';
+   $opt[] = $defopt . "--title \"Speedtest Ping\"";
+   $def[] = ""
+        . fhem_area("ping",             "2b85c8", "Ping",           "ms",      FALSE)
+        ;
+}
+
 
 
 ?>

@@ -16,8 +16,8 @@ my $aref = $data->{Results};
 
 for my $device (@$aref) {
 
-        ## filter for physical devices (IODev is set) OR channel-devices
-        if (defined $device->{Attributes}{IODev} || ( defined $device->{Internals}{device} && defined $device->{Internals}{chanNo} ) ) {
+        ## filter for physical devices (IODev is set) OR channel-devices OR type speedtest
+        if (defined $device->{Attributes}{IODev} || ( defined $device->{Internals}{device} && defined $device->{Internals}{chanNo} ) || $device->{Internals}{TYPE} eq "speedtest" ) {
                 my $devicename;
 
                 ## check if device is a channel

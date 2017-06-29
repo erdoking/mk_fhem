@@ -138,6 +138,15 @@ def check_fhem(item, params, info):
                 ('protocol',            'protocol',             '',                 '',                0,          0),
                 ('checkInterval',       'checkInterval',        's',                '',                0,          0),
                 ('sendInterval',        'sendInterval',         's',                '',                0,          0),
+                ## Speedtest
+                ('download',            'download',             'Mbit/s',           '',                1,          1),
+                ('ping',                'ping',                 'ms',               '',                1,          1),
+                ('state',               'state',                '',                 '',                0,          0),
+                ('upload',              'upload',               'Mbit/s',           '',                1,          1),
+#               ('path',                'path',                 '',                 '',                0,          0),
+
+
+
         ]:
           ## reset
           display_value = "" 
@@ -292,6 +301,9 @@ factory_settings["fhem_default_params"] = {
         "level_humidity_min"           : (50, 45),         # warn/crit for min. humidity
         "level_dewpoint_max"           : (3, 1),           # warn/crit for diff to temperatur (exp. 17°C (dewp) vs 20°C(temp))
         "level_batteryLevel_min"       : (2.1, 2.3),       # warn/crit for max. temperature
+        "level_download_min"           : (0, 0),           # warn/crit for min download (speedtest)
+        "level_upload_min"             : (0, 0),           # warn/crit for min upload (speedtest)
+        "level_ping"                   : (100, 150),       # warn/crit for ping (speedtest)
         "var_activity"                 : ("alive"),        # default for alive
         "var_contact"                  : ("ignore"),       # default for contact
         "var_dewpoint_override"        : ("true"),         # don't alert humidity if dewpoint given
