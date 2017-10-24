@@ -2,22 +2,26 @@
 use strict;
 use warnings;
 
-#use lib qw(..);
 use JSON qw( );
-use Data::Dumper;               # Perl core module
+use Data::Dumper;
+
+## change path / port here if necessary 
+my $fhem_outpout = `/opt/fhem/fhem.pl 7072 "jsonlist2 TYPE=.*:FILTER=state=..*:FILTER=model!=CCU-FHEM:FILTER=model!=ActionDetector"`;
+
+## special device types to be monitored
+## normaly filtered out
+my @allowed_types = ( 'speedtest', 'CUL', 'JeeLink', 'TRAFFIC' );
 
 my %devices;
-
-my $fhem_outpout = `/opt/fhem/fhem.pl 7072 "jsonlist2 TYPE=.*:FILTER=state=..*:FILTER=model!=CCU-FHEM:FILTER=model!=ActionDetector"`;
 my $json = JSON->new;
 my $data = $json->decode($fhem_outpout);
-
 my $aref = $data->{Results};
 
 for my $device (@$aref) {
 
-        ## filter for physical devices (IODev is set) OR channel-devices OR type speedtest
-        if (defined $device->{Attributes}{IODev} || ( defined $device->{Internals}{device} && defined $device->{Internals}{chanNo} ) || $device->{Internals}{TYPE} eq "speedtest" ) {
+        ## filter for physical devices (IODev is set) OR channel-devices OR Type speedtest
+        if (defined $device->{Attributes}{IODev} || ( defined $device->{Internals}{device} && defined $device->{Internals}{chanNo} ) || $device->{Internals}{TYPE} ~~ @allowed_types ) {
+
                 my $devicename;
 
                 ## check if device is a channel
@@ -30,19 +34,19 @@ for my $device (@$aref) {
                 }
 
                 ## get device attributes
-                while (my ($attribute, $value) = (each($device->{Attributes}))) {
+                while (my ($attribute, $value) = (each(%{$device->{Attributes}}))) {
                         ## e.g: $devices{eg.wz.thermostat}{Attributes}{model} = HM-SEC-SCo;
                         $devices{$devicename}{$device->{Name}}{Attributes}{$attribute} = $value;
                 }
-                ## get device readings
-                foreach my $data (sort keys $device->{Readings}){
-                        while (my ($reading, $value) = (each($device->{Readings}{$data}))) {
+                ## get device readings  
+                foreach my $data (sort keys %{$device->{Readings}}){
+                        while (my ($reading, $value) = (each(%{$device->{Readings}{$data}}))) {
                                 ## e.g: $devices{eg.wz.thermostat}{Readings}{model} = HM-SEC-SCo;
                                 $devices{$devicename}{$device->{Name}}{Readings}{$data}{$reading} = $value;
                         }
                 }
                 ## get device internals
-                while (my ($internal, $value) = (each($device->{Internals}))) {
+                while (my ($internal, $value) = (each(%{$device->{Internals}}))) {
                         ## e.g: $devices{eg.wz.thermostat}{Internals}{LASTInputDev} = myJeeLink;
                         $devices{$devicename}{$device->{Name}}{Internals}{$internal} = $value;
                 }
@@ -67,9 +71,9 @@ foreach my $device (sort keys %devices ){
                 printf("%-41s %-32s %-20s %s\n", "", $device, 'model', $devices{$device}{$device}{Attributes}{model});
         }
 
-        foreach my $channel (sort keys $devices{$device}){
-                ## get device readings
-                foreach my $reading (sort keys $devices{$device}{$channel}{Readings}){
+        foreach my $channel (sort keys %{$devices{$device}}){   
+                ## get device readings  
+                foreach my $reading (sort keys %{$devices{$device}{$channel}{Readings}}){
                         if ( "$reading" !~ /RegL_\d+/) {
                                 ## e.g: $devices{eg.wz.thermostat}{Readings}{model} = HM-SEC-SCo
                                 printf("%-20s %-20s %-30s   %-20s %s\n","", $devices{$device}{$channel}{Readings}{$reading}{Time}, $channel, $reading, $devices{$device}{$channel}{Readings}{$reading}{Value});
@@ -78,6 +82,6 @@ foreach my $device (sort keys %devices ){
         }
 }
 
-
+## debug
 #print Dumper \%devices;
 

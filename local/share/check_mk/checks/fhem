@@ -92,6 +92,11 @@ def check_fhem(item, params, info):
                                 data[line[3]]['value']=line[4]
                                 data[line[3]]['time']=( "%s %s" % (line[0], line[1]))
                                 data[line[3]]['channel'] = line[2]
+                                ## needed for traffic
+                                if len(line) > 6:
+                                        if line[5] == 'hour':
+#                                                hour2min=
+                                                data[line[3]]['value']=(int(line[4])*60)+int(line[6])
         
         if ourstatus == 0:
                 return (3, "UNKNOWN - %s - %s " % (device, dewpoint))
@@ -141,9 +146,15 @@ def check_fhem(item, params, info):
                 ## Speedtest
                 ('download',            'download',             'Mbit/s',           '',                1,          1),
                 ('ping',                'ping',                 'ms',               '',                1,          1),
-                ('state',               'state',                '',                 '',                0,          0),
+                ('state',               'state',                '',                 '',                1,          0),
                 ('upload',              'upload',               'Mbit/s',           '',                1,          1),
 #               ('path',                'path',                 '',                 '',                0,          0),
+                ## TRAFFIC
+                ('delay',               'delay',                'min',              '',                1,          1),
+                ('distance',            'distance',             'km',               '',                1,          1),
+                ('duration',            'duration',             'mins',             '',                1,          1),
+                ('duration_in_traffic', 'duration_in_traffic',  'mins',             '',                1,          1),
+
 
 
 
@@ -225,6 +236,7 @@ def check_fhem(item, params, info):
                     if key == 'humidity' and params['var_dewpoint_override'] == 'true':
                         ignoreit = 'true'
 
+
                     ## there are sometime duplicate keys on channel like controlmode in '_Clima' and '_Climate' 
                     ## Just filter out some HomeMatic-channel
                     if channel == '' or data[key]['channel'] == "%s_%s" % (item, channel):
@@ -301,8 +313,8 @@ factory_settings["fhem_default_params"] = {
         "level_humidity_min"           : (50, 45),         # warn/crit for min. humidity
         "level_dewpoint_max"           : (3, 1),           # warn/crit for diff to temperatur (exp. 17°C (dewp) vs 20°C(temp))
         "level_batteryLevel_min"       : (2.1, 2.3),       # warn/crit for max. temperature
-        "level_download_min"           : (0, 0),           # warn/crit for min download (speedtest)
-        "level_upload_min"             : (0, 0),           # warn/crit for min upload (speedtest)
+        "level_download_min"           : (10, 8),           # warn/crit for min download (speedtest)
+        "level_upload_min"             : (1.5, 1),           # warn/crit for min upload (speedtest)
         "level_ping"                   : (100, 150),       # warn/crit for ping (speedtest)
         "var_activity"                 : ("alive"),        # default for alive
         "var_contact"                  : ("ignore"),       # default for contact

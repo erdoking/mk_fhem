@@ -135,7 +135,7 @@ if (isset($fhem_defines['download']) ) {
         ;
 }
 
-# 7. Speedtest (ping)
+# 8. Speedtest (ping)
 if (isset($fhem_defines['ping']) ) {
    $ds_name[] = 'speedtest_ping';
    $opt[] = $defopt . "--title \"Speedtest Ping\"";
@@ -144,6 +144,15 @@ if (isset($fhem_defines['ping']) ) {
         ;
 }
 
-
+# 9. Traffic (duration)
+if (isset($fhem_defines['duration']) ) {
+   $ds_name[] = 'duration';
+   $opt[] = $defopt . "--title \"Traffic duration\"";
+   $def[] = ""
+        . fhem_area("duration", "00bfff", "Duration", "min", FALSE)
+        . fhem_area("delay", "f78181", "Delay", "min", TRUE)
+        . fhem_curve("LINE2", "duration_in_traffic", "B40404", "Duration in traffic", "min", FALSE)
+        ;
+}   
 
 ?>
