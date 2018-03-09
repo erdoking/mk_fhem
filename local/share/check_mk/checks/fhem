@@ -66,27 +66,28 @@ def check_fhem(item, params, info):
 
         errorlevel, warnlevel = 0, 0
 
-        model = ""
+        dev_model = ""
+        dev_type = ""
         output = []
+        perfdata = []
         data = {}
+        in_device = 0
+
 
 #        ## bugfix, at beginning all timestamp up-to-date 
 #        ## necessary because some devices don't send all data (weather-provider has no battery)
 #        battery_timestamp, dewpoint_timespamp, state_timestamp = time.time(), time.time(), time.time()
 
-        errorlevel = 0
-        ourstatus = 0
-        device = ""
         for line in info:
                 if len(line) == 4 and line[2] == 'TYPE':
                         if line[0] == item:
                                 dev_type = line[3]
-                                ourstatus = 1
-                        elif ourstatus == 1:
+                                in_device = 1
+                        elif in_device == 1:
                                 break
-                elif ourstatus == 1:
-#                        if line[0] == model:
-#                                model = line[0]
+                elif in_device == 1:
+                        if line[1] == 'model':
+                                dev_model = line[2]
                         if len(line) > 3 and line[3] != 'null':
                                 data[line[3]] = {}
                                 data[line[3]]['value']=line[4]
@@ -95,20 +96,18 @@ def check_fhem(item, params, info):
                                 ## needed for traffic
                                 if len(line) > 6:
                                         if line[5] == 'hour':
-#                                                hour2min=
+                                                # convert hours to minutes 
                                                 data[line[3]]['value']=(int(line[4])*60)+int(line[6])
 
         # mostly config mistake or incorrect agent output
-        if ourstatus == 0:
-                return (3, "UNKNOWN - unable to parse %s" % (item))
-
-        perfdata = []
+        if in_device == 0:
+                return (3, "UNKNOWN - unable to parse %s (type: %s, model: %s)" % (item, dev_type, dev_model ))
 
 # ##################################################################
 
         ## key          => variable_name
         ## title        => readable output
-        ## unit         => °C, &, V., kmh, ... (for output)
+        ## unit         => °C, %, V., kmh, ... (for output)
         ## channel      => filter for channel (HomeMatic)
         ## show         => print if no error
         ## perfd        => print perfdata
