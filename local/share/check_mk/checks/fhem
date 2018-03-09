@@ -97,9 +97,10 @@ def check_fhem(item, params, info):
                                         if line[5] == 'hour':
 #                                                hour2min=
                                                 data[line[3]]['value']=(int(line[4])*60)+int(line[6])
-        
+
+        # mostly config mistake or incorrect agent output
         if ourstatus == 0:
-                return (3, "UNKNOWN - %s - %s " % (device, dewpoint))
+                return (3, "UNKNOWN - unable to parse %s" % (item))
 
         perfdata = []
 
@@ -332,4 +333,5 @@ check_info['fhem'] = {
     "group"                   : "fhem",
     "default_levels_variable" : "fhem_default_params",
 }
+
 
