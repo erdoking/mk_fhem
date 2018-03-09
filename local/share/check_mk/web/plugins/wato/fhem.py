@@ -57,6 +57,35 @@ register_check_parameters(
                           Integer(title = _("Critical below"), unit = u"%", default_value = 45),
                       ]
                 )),
+                ( "level_dewpoint_max",
+                  Tuple(
+                      title = _("diff to temperatur (exp. 17°C (dewp) vs 20°C(temp)"),
+                      help = _("You can adjust the levels before this service goes into warning/critical. Set to 999 to disable."),
+                      elements = [
+                          Integer(title = _("Warning below"), unit = u"%", default_value = 3),
+                          Integer(title = _("Critical below"), unit = u"%", default_value = 1),
+                      ]
+                )),
+               ("var_dewpoint_override",
+                 Alternative(
+                    title = _('state'),
+                    style = "dropdown",
+                    allow_empty = False,
+                    help = _("don't alert humidity if dewpoint given. (default: true)"),
+                    elements = [
+                        FixedValue(
+                            'true',
+                            totext = "true",
+                            title = _("true"),
+                        ),
+                        FixedValue(
+                            'false',
+                            totext = "false",
+                            title = _("false"),
+                        ),
+                   ]
+                )),
+
                 ( "level_data_age",
                   Tuple(
                       title = _("Time left until data becoming obsolet."),
@@ -80,8 +109,8 @@ register_check_parameters(
                       title = _("Level for speedtest download "),
                       help = _("You can adjust the levels before this service goes into warning/critical. Set to 0 to disable."),
                       elements = [
-                          Percentage(title = _("Warning at"), unit = "Mbit/s", default_value = 10),
-                          Percentage(title = _("Critical at"), unit = "Mbit/s", default_value = 8),
+                          Percentage(title = _("Warning at"), unit = "Mbit/s", default_value = 10.0),
+                          Percentage(title = _("Critical at"), unit = "Mbit/s", default_value = 8.0),
                       ]
                 )),
                 ( "level_upload_min",
@@ -90,7 +119,7 @@ register_check_parameters(
                       help = _("You can adjust the levels before this service goes into warning/critical. Set to 0 to disable."),
                       elements = [
                           Percentage(title = _("Warning at"), unit = "Mbit/s", default_value = 1.5),
-                          Percentage(title = _("Critical at"), unit = "Mbit/s", default_value = 1),
+                          Percentage(title = _("Critical at"), unit = "Mbit/s", default_value = 1.0),
                       ]
                 )),
                 ( "level_ping",
@@ -98,8 +127,8 @@ register_check_parameters(
                       title = _("Level for speedtest ping"),
                       help = _("You can adjust the levels before this service goes into warning/critical. Set to 0 to disable."),
                       elements = [  
-                          Percentage(title = _("Warning at"), unit = "ms", default_value = 100),
-                          Percentage(title = _("Critical at"), unit = "ms", default_value = 150),
+                          Integer(title = _("Warning at"), unit = "ms", default_value = 100),
+                          Integer(title = _("Critical at"), unit = "ms", default_value = 150),
                       ]
                 )), 
                ("var_state",
@@ -122,8 +151,6 @@ register_check_parameters(
                    ]
 
                 )),
-
-
                 ("var_controlMode", 
                  Alternative(
                     title = _('Control Mode'),
