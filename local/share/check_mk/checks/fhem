@@ -133,12 +133,15 @@ def check_fhem(item, params, info):
                 ('R-btnLock',           'btnLock',              '',                 '',                0,          0),
                 ('R-globalBtnLock',     'globalBtnLock',        '',                 '',                0,          0),
                 ('R-modusBtnLock',      'modusBtnLock',         '',                 '',                0,          0),
-                ## MilightDevice (and others?)
+                ## MilightDevice, WifiLight, ... 
                 ('brightness',          'brightness',           u'%',               '',                1,          1),
                 ('brightness_on',       'brightness_on',        u'%',               '',                0,          1),
                 ('ct',                  'ct',                   'K',                '',                1,          1),
                 ('hsv',                 'hsv',                  '',                 '',                0,          0),
-                ('transitionInProgress','transitionInProgress', '',                 '',                0,          1),
+                ('transitionInProgress','transitionInProgress', '',                 '',                0,          0),
+                ('hue',                 'hue',                  '',                 '',                0,          0),
+                ('saturation',          'saturation',           '',                 '',                0,          1),
+                ('RGB',                 'RGB',                  '',                 '',                1,          0),
                 ## MiLightBridge
                 ('protocol',            'protocol',             '',                 '',                0,          0),
                 ('checkInterval',       'checkInterval',        's',                '',                0,          0),
@@ -154,8 +157,6 @@ def check_fhem(item, params, info):
                 ('distance',            'distance',             'km',               '',                1,          1),
                 ('duration',            'duration',             'mins',             '',                1,          1),
                 ('duration_in_traffic', 'duration_in_traffic',  'mins',             '',                1,          1),
-
-
 
 
         ]:
@@ -313,8 +314,8 @@ factory_settings["fhem_default_params"] = {
         "level_humidity_min"           : (50, 45),         # warn/crit for min. humidity
         "level_dewpoint_max"           : (3, 1),           # warn/crit for diff to temperatur (exp. 17°C (dewp) vs 20°C(temp))
         "level_batteryLevel_min"       : (2.3, 2.1),       # warn/crit for max. temperature
-        "level_download_min"           : (10, 8),           # warn/crit for min download (speedtest)
-        "level_upload_min"             : (1.5, 1),           # warn/crit for min upload (speedtest)
+        "level_download_min"           : (10, 8),          # warn/crit for min download (speedtest)
+        "level_upload_min"             : (1.5, 1),         # warn/crit for min upload (speedtest)
         "level_ping"                   : (100, 150),       # warn/crit for ping (speedtest)
         "var_activity"                 : ("alive"),        # default for alive
         "var_contact"                  : ("ignore"),       # default for contact
@@ -322,6 +323,8 @@ factory_settings["fhem_default_params"] = {
         "var_btnLock"                  : ("ignore"),       # simple button lock
         "var_globalBtnLock"            : ("ignore"),       # full button lock
         "var_modusBtnLock"             : ("ignore"),       # modus button lock
+        "var_RGB_color"                : ("ignore"),       # RGB color hexcode
+        "var_brightness"               : ("ignore"),       # color brightness
 }
 
 check_info['fhem'] = {

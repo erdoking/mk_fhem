@@ -287,6 +287,52 @@ register_check_parameters(
                    ]
 
                 )),
+               ("var_RGB_color",
+                 Alternative(
+                    title = _('RGB color'),
+                    style = "dropdown",
+                    allow_empty = False,
+                    help = _("Check state of reading 'RGB' (without #)"),
+                    elements = [
+                        FixedValue(
+                            'FFFFFF',
+                            totext = "white",
+                            title = _("white"),
+                        ),
+                        TextAscii(
+                            title = _("custom"),
+                            label = _("custom:"),
+                            size = 6,
+                        ),
+                   ]
+
+                )),
+               ("var_brightness",
+                 Alternative(
+                    title = _('light brightness'),
+                    style = "dropdown",
+                    allow_empty = False,
+                    help = _("Check state of reading 'brightness' (default: ignore) "),
+                    elements = [
+                        FixedValue(
+                            '100',
+                            totext = "100%",
+                            title = _("100%"),
+                        ),
+                        FixedValue(
+                            '0',
+                            totext = "0%",
+                            title = _("0%"),
+                        ),
+                        TextAscii(
+                            title = _("custom"),
+                            label = _("custom:"),
+                            size = 3,
+                        ),
+                   ]
+
+                )),
+
 
             ],
 #                optional_keys = False,
