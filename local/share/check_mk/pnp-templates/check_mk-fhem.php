@@ -155,4 +155,14 @@ if (isset($fhem_defines['duration']) ) {
         ;
 }   
 
+
+# 9. Traffic (duration)
+if (isset($fhem_defines['presence']) ) {
+   $ds_name[] = 'presence';
+   $opt[] = $defopt . "--title \"Presence\"";
+   $def[] = ""
+        . fhem_area("presence", "00bfff", "Presence", "", FALSE)
+        ;
+}
+
 ?>
