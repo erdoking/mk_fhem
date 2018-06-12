@@ -104,6 +104,27 @@ register_check_parameters(
                           Percentage(title = _("Critical at"), unit = "V", default_value = 2.1),
                       ]
                 )),
+               ("var_battery",
+                 Alternative(
+                    title = _('State of battery'),
+                    style = "dropdown",
+                    allow_empty = False,
+                    help = _("Check state of reading 'battery' (default: ok) "),
+                    elements = [
+                        FixedValue(
+                            'ignore',
+                            totext = "ignore",
+                            title = _("ignore"),
+                        ),
+                        TextAscii(
+                            title = _("custom"),
+                            label = _("custom:"),
+                            size = 50,
+                        ),
+                   ]
+
+                )),
+
                 ( "level_download_min",
                   Tuple(
                       title = _("Level for speedtest download "),

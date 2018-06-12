@@ -133,6 +133,7 @@ def check_fhem(item, params, info):
                 ('R-btnLock',           'btnLock',              '',                 '',                0,          0),
                 ('R-globalBtnLock',     'globalBtnLock',        '',                 '',                0,          0),
                 ('R-modusBtnLock',      'modusBtnLock',         '',                 '',                0,          0),
+                ('R-tempOffset',        'tempOffset',           'K',                'Clima',           1,          0),
                 ## MilightDevice, WifiLight, ... 
                 ('brightness',          'brightness',           u'%',               '',                1,          1),
                 ('brightness_on',       'brightness_on',        u'%',               '',                0,          1),
@@ -315,10 +316,11 @@ factory_settings["fhem_default_params"] = {
         "level_dewpoint_max"           : (3, 1),           # warn/crit for diff to temperatur (exp. 17°C (dewp) vs 20°C(temp))
         "level_batteryLevel_min"       : (2.3, 2.1),       # warn/crit for max. temperature
         "level_download_min"           : (10.0, 8.0),      # warn/crit for min download (speedtest)
-        "level_upload_min"             : (1.5, 1.0),         # warn/crit for min upload (speedtest)
+        "level_upload_min"             : (1.5, 1.0),       # warn/crit for min upload (speedtest)
         "level_ping"                   : (100, 150),       # warn/crit for ping (speedtest)
-#        "var_activity"                 : ("alive"),        # default for alive
+#        "var_activity"                 : ("alive"),       # default for alive
         "var_contact"                  : ("ignore"),       # default for contact
+        "var_battery"                  : ("ok"),           # default for battery
         "var_dewpoint_override"        : ("true"),         # don't alert humidity if dewpoint given
         "var_btnLock"                  : ("ignore"),       # simple button lock
         "var_globalBtnLock"            : ("ignore"),       # full button lock
