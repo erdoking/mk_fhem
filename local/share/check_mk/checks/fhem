@@ -262,12 +262,12 @@ def check_fhem(item, params, info):
                                         if show:
                                                 display_value = ('%s%s' % ( value, unit ))
                                         if perfd:
-                                                perfdata.append( ( key , 1, ""  ) )
+                                                perfdata.append( ( title, 1, "" ) )
                                 else:
                                         display_value = ("%s (expected: %s) (!!)" % (value, var_plain))
                                         errorlevel = 2
                                         if perfd:
-                                                perfdata.append( ( key, 0, "" ) )
+                                                perfdata.append( ( title, 0, "" ) )
                             ## define output
                             elif show:
                                 display_value = ('%s%s' % ( value, unit ))
@@ -318,7 +318,7 @@ factory_settings["fhem_default_params"] = {
         "level_download_min"           : (10.0, 8.0),      # warn/crit for min download (speedtest)
         "level_upload_min"             : (1.5, 1.0),       # warn/crit for min upload (speedtest)
         "level_ping"                   : (100, 150),       # warn/crit for ping (speedtest)
-#        "var_activity"                 : ("alive"),       # default for alive
+        "var_activity"                 : ("alive"),       # default for alive
         "var_contact"                  : ("ignore"),       # default for contact
         "var_battery"                  : ("ok"),           # default for battery
         "var_dewpoint_override"        : ("true"),         # don't alert humidity if dewpoint given
