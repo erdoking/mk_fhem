@@ -2,6 +2,9 @@
 
 check_MK Plugin für FHEM
 
+Getestet mit CheckMK 1.4.0p33 (Stand: 06.2018)
+FHEM-Forum: https://forum.fhem.de/index.php/topic,63723.0.html
+
 ## Vorraussetzung
 * laufendender FHEM-Server
 * laufender checkMK-Server
@@ -27,3 +30,4 @@ check_MK Plugin für FHEM
 * Einbindung weiterer Geräte/Hersteller
 * Perf-O-Meter
 * Aufnahme weiterer Überwachungs-Parameter (Readings,...)
+* mpk erstellen
