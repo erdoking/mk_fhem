@@ -5,6 +5,8 @@ check_MK Plugin für FHEM
 Getestet mit CheckMK 1.4.0p33 (Stand: 06.2018)
 FHEM-Forum: https://forum.fhem.de/index.php/topic,63723.0.html
 
+ACHTUNG! In Version v0.9 hat sich die WATO Konfiguration massiv geändert, ältere WATO-Konfigurationen funktinieren nicht mehr und müssen neu erstellt werden!
+
 ## Vorraussetzung
 * laufendender FHEM-Server
 * laufender checkMK-Server
@@ -30,4 +32,3 @@ FHEM-Forum: https://forum.fhem.de/index.php/topic,63723.0.html
 * Einbindung weiterer Geräte/Hersteller
 * Perf-O-Meter
 * Aufnahme weiterer Überwachungs-Parameter (Readings,...)
-* mpk erstellen
