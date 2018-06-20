@@ -26,6 +26,7 @@ ACHTUNG! In Version v0.9 hat sich die WATO Konfiguration massiv geändert, älte
 ## Installation
 * Dateien auf den checkMK-Server kopieren (~/local/share/check_mk)
 * local/share/check_mk/agents/mk_fhem auf dem FHEM-Server nach /usr/lib/check_mk_agent/plugins/ kopieren
+* chmod +x /usr/lib/check_mk_agent/plugins/mk_fhem
 * ggf. telnet Passwort/Port anpassen
 
 ## ToDo
