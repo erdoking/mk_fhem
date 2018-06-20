@@ -3,6 +3,7 @@
 
 import time
 import datetime
+import re
 
 # Example for output from agent
 # ---------------------------------------------------------
@@ -167,6 +168,7 @@ def check_fhem(item, params, info):
           display_value = "" 
           ignoreit        = ""
 #          var_data_age = ""
+          fetch_plain = None
 
 
           ## check if device output data (temperature, humidity, ... )
@@ -179,6 +181,23 @@ def check_fhem(item, params, info):
                     var_min = 'level_%s_min' % title
                     var_data_age = '%s_date' % title
                     var_plain = 'var_%s' % title        ## e.g. contact: open (var_plain => open)
+                    var_params = '%s_params' % title
+
+                    ## set upper level to default values if exist else we set to null
+                    if eval("var_max") in params:
+                            upper_warn, upper_crit = params[eval("var_max")]
+                    else:
+                            upper_warn, upper_crit = 0, 0
+
+                    ## set lower level to default values if exist else we set to null
+                    if eval("var_min") in params:
+                            lower_warn, lower_crit = params[eval("var_min")]
+                    else:
+                            lower_warn, lower_crit = 0, 0
+
+                    ## set plain text variables to default
+                    if eval("var_plain") in params:
+                            fetch_plain = params[eval("var_plain")]
 
         #            print var_data_age
         #                    if  params[eval("desiredtemp_date")]:
@@ -187,46 +206,58 @@ def check_fhem(item, params, info):
         #            except:
         #                   pass
 
-                    try:
-                        if params[eval("var_max")]:
-                                ## check the difference between dewpoint and temperature
-                                if key == 'dewpoint':
-                                        max_warn_dewpoint, max_crit_dewpoint = params[eval("var_max")]
-                                        max_warn = float(data['temperature']['value']) - max_warn_dewpoint
-                                        max_crit = float( data['temperature']['value']) - max_crit_dewpoint
-                                else:   
-                                        max_warn, max_crit = params[eval("var_max")]
-                        pass
-                    except:
-                        max_warn, max_crit = 0, 0
-                        pass
-                    try:
-                        if params[eval("var_min")]:
-                                min_warn, min_crit = params[eval("var_min")]
-                        pass
-                    except:
-                        min_warn, min_crit = 0, 0
-                        pass
-                    try:
-                        if params[eval("var_plain")]:
-                                var_plain = params[eval("var_plain")]
-                        pass
-                    except:
-                        var_plain = None
-                        pass
+                    for param_group in params.keys():
 
-                    try:
-                        if eval(var_data_age) and eval(var_data_age) != "":
-                                local_timestamp = time.time()
-                                var_data_timestamp = time.mktime(datetime.datetime.strptime(eval(var_data_age) , "%Y-%m-%d %H:%M:%S").timetuple())
-                                data_age = int( ( local_timestamp - var_data_timestamp ) / 60 )
-                        pass
-                    except:
-                        ## bugfix, at beginning all timestamp up-to-date 
-                        ## necessary because some devices don't send all data (weather-provider has no battery)
-                        data_age = 0
-                        pass
+                      ## just loop over param categories (WATO)
+                      ## all categories need to named "*_params"
+                      if re.match('[a-z]+_params', param_group) is not None:
 
+                        ## loop over sub-categories
+                        for param_subgroup in params[param_group]:
+
+                            ## get configuration from WATO
+                            ## we create the runtime variable "fetch_params"
+                            try:
+                                ## like: fetch_params = params["climate_params"]
+                                fetch_params = params[param_group][param_subgroup]
+                            except:
+                                pass
+
+                            ## get minimal thresholds
+                            try:
+                                if eval("var_min") in fetch_params:
+                                        ## like: if level_temperature_min in fetch_params["climate_params"]:
+                                        lower_warn, lower_crit = fetch_params[eval("var_min")]
+                            except:
+                                       pass
+
+                            ## get maximal thresholds
+                            try:
+                                ## like: if level_temperature_max in fetch_params[]:
+                                if eval("var_max") in fetch_params: 
+                                        upper_warn, upper_crit = fetch_params[eval("var_max")]
+                            except:
+                                pass
+
+                            ## get plain text
+                            try:
+                                ## like: if level_temperature_min in fetch_params[]:
+                                if eval("var_plain") in fetch_params:
+                                        fetch_plain = fetch_params[eval("var_plain")]
+                            except:
+                                pass
+ 
+                     ## not used (yet)                                    
+#                    try:
+#                        if eval(var_data_age) and eval(var_data_age) != "":
+#                                local_timestamp = time.time()
+#                                var_data_timestamp = time.mktime(datetime.datetime.strptime(eval(var_data_age) , "%Y-%m-%d %H:%M:%S").timetuple())
+#                                data_age = int( ( local_timestamp - var_data_timestamp ) / 60 )
+#                    except:
+#                        ## bugfix, at beginning all timestamp up-to-date 
+#                        ## necessary because some devices don't send all data (weather-provider has no battery)
+#                        data_age = 0
+#                        pass
 
         #            if data_age > dage_crit:
         ##                 print ("data_age = %s, dage_crit = %s" % (data_age, dage_crit))
@@ -237,6 +268,12 @@ def check_fhem(item, params, info):
         #                 warnlevel = 1
         #            else:
 
+                    ## calulate warn level for dewpoint 
+                    if key == 'dewpoint':
+                        upper_warn = float(data['temperature']['value']) - upper_warn
+                        upper_crit = float(data['temperature']['value']) - upper_crit
+
+                    ## ignore humidity by default if dewpoint is given
                     if key == 'humidity' and params['var_dewpoint_override'] == 'true':
                         ignoreit = 'true'
 
@@ -245,38 +282,39 @@ def check_fhem(item, params, info):
                     ## Just filter out some HomeMatic-channel
                     if channel == '' or data[key]['channel'] == "%s_%s" % (item, channel):
                             ## check critical level (max/min)
-                            if ( (max_crit != 0 and float(value) >= max_crit) or (min_crit != 0 and float(value) <= min_crit) ) and not ignoreit:
-                                if max_crit != 0 and float(value) >= max_crit:
-                                        display_value = ('%s%s (warn/crit at %s%s/%s%s) (!!)' % ( value, unit, max_warn, unit, max_crit, unit))
-                                elif float(value) <= min_crit:
-                                        display_value = ('%s%s (warn/crit at %s%s/%s%s) (!!)' % ( value, unit, min_warn, unit, min_crit, unit)) 
+                            if ( (upper_crit != 0 and float(value) >= upper_crit) or (lower_crit != 0 and float(value) <= lower_crit) ) and not ignoreit:
+                                if upper_crit != 0 and float(value) >= upper_crit:
+                                        display_value = ('%s%s (warn/crit at %s%s/%s%s) (!!)' % ( value, unit, upper_warn, unit, upper_crit, unit))
+                                elif float(value) <= lower_crit:
+                                        display_value = ('%s%s (warn/crit at %s%s/%s%s) (!!)' % ( value, unit, lower_warn, unit, lower_crit, unit)) 
                                 errorlevel = 2
                             ## check warning level (max/min)
-                            elif ( (max_warn != 0 and float(value) >= max_warn) or (min_warn != 0 and float(value) <= min_warn) ) and not ignoreit:
-                                if max_warn != 0 and float(value) >= max_warn:
-                                        display_value = ('%s%s (warn/crit at %s%s/%s%s) (!)' % ( value, unit, max_warn, unit, max_crit, unit))
-                                elif float(value) <= min_warn:
-                                        display_value = ('%s%s (warn/crit at %s%s/%s%s) (!)' % ( value, unit, min_warn, unit, min_crit, unit))
+                            elif ( (upper_warn != 0 and float(value) >= upper_warn) or (lower_warn != 0 and float(value) <= lower_warn) ) and not ignoreit:
+                                if upper_warn != 0 and float(value) >= upper_warn:
+                                        display_value = ('%s%s (warn/crit at %s%s/%s%s) (!)' % ( value, unit, upper_warn, unit, upper_crit, unit))
+                                elif float(value) <= lower_warn:
+                                        display_value = ('%s%s (warn/crit at %s%s/%s%s) (!)' % ( value, unit, lower_warn, unit, lower_crit, unit))
                                 warnlevel = 1
-                            elif var_plain:
+                            elif fetch_plain:
                                 ## just alert if value not identic or ignored
-                                if value == var_plain or var_plain == "ignore":
+                                if value == fetch_plain or fetch_plain == "ignore":
                                         if show:
                                                 display_value = ('%s%s' % ( value, unit ))
                                         if perfd:
                                                 perfdata.append( ( title, 1, "" ) )
                                 else:
-                                        display_value = ("%s (expected: %s) (!!)" % (value, var_plain))
+                                        display_value = ("%s (expected: %s) (!!)" % (value, fetch_plain))
                                         errorlevel = 2
                                         if perfd:
                                                 perfdata.append( ( title, 0, "" ) )
                             ## define output
                             elif show:
-                                display_value = ('%s%s' % ( value, unit ))
+                                display_value = ('%s%s' % ( value, unit))
+
 
                             ## define perfdata (just add numeric values)
-                            if perfd and not var_plain:
-                                perfdata.append( ( title, value, max_warn, max_crit, "", "" ) )
+                            if perfd and not fetch_plain:
+                                perfdata.append( ( title, value, upper_warn, upper_crit, "", "" ) )
 
 
                             ## not used (yet)
@@ -319,7 +357,7 @@ factory_settings["fhem_default_params"] = {
         "level_batteryLevel_min"       : (2.3, 2.1),       # warn/crit for max. temperature
         "level_download_min"           : (10.0, 8.0),      # warn/crit for min download (speedtest)
         "level_upload_min"             : (1.5, 1.0),       # warn/crit for min upload (speedtest)
-        "level_ping"                   : (100, 150),       # warn/crit for ping (speedtest)
+        "level_ping_max"               : (100, 150),       # warn/crit for ping (speedtest)
         "var_activity"                 : ("alive"),        # default for alive
         "var_presence"                 : ("present"),      # default for presence
         "var_contact"                  : ("ignore"),       # default for contact
@@ -330,6 +368,7 @@ factory_settings["fhem_default_params"] = {
         "var_modusBtnLock"             : ("ignore"),       # modus button lock
         "var_RGB_color"                : ("ignore"),       # RGB color hexcode
         "var_brightness"               : ("ignore"),       # color brightness
+        "var_state"                    : ("ignore"),       # reading state
 }
 
 check_info['fhem'] = {
