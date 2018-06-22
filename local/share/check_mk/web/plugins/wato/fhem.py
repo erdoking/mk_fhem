@@ -511,6 +511,41 @@ register_check_parameters(
                         ),
                    ]
                 )),
+                       ## Device activity (reading)
+                       ("var_activity",
+                         Alternative(
+                            title = _('Decice activity (r: activity)'),
+                            style = "dropdown",
+                            allow_empty = False,
+                            help = _("Check state of reading 'activity' (default: alive) "),
+                            elements = [
+                                FixedValue(
+                                    'alive',
+                                    totext = "alive",
+                                    title = _("alive"),
+                                ), 
+                                FixedValue(
+                                    'ignore',
+                                    title = _("ignore"),
+                                ),
+                                FixedValue(
+                                    'dead',
+                                    totext = "dead",
+                                    title = _("dead"),
+                                ),
+                                FixedValue(
+                                    'switchedOff',
+                                    totext = "switchedOff",
+                                    title = _("switchedOff"),
+                                ),
+                                TextAscii(
+                                    title = _("custom"),
+                                    label = _("custom:"),
+                                    size = 50,
+                                ),
+                           ]
+
+                        )),
 
                ]
               )),
