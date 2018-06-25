@@ -549,6 +549,183 @@ register_check_parameters(
 
                ]
               )),
+              ## ----------------------------------------------------
+              ## Sub-category Luxtronik
+              ## ----------------------------------------------------
+              ('luxtronik2_params', Dictionary(
+               title = "Luxtronik",
+               help = _("Luxtronik specific parameter"),
+               allow_empty = False,
+               elements = [
+                       ## ambientTemperature upper level
+                       ( "level_ambientTemperature_max",
+                          Tuple(
+                              help = _("You can adjust the levels before this service goes into warning/critical. Set to 1000 to disable."),
+                              title = _("Ambient temperature upper Levels (r: ambientTemperature)"),
+                              elements = [
+                                  Integer(title = _("Warning at"), unit = u"°C", default_value = 26),
+                                  Integer(title = _("Critical at"), unit = u"°C", default_value = 30),
+                              ]
+                        )),
+                        ## ambientTemperature lower level
+                        ( "level_ambientTemperature_min",
+                          Tuple(
+                              title = _("Ambient temperature lower Levels (r: ambientTemperature)"),
+                              help = _("You can adjust the levels before this service goes into warning/critical. Set to -1000 to disable."),
+                              elements = [
+                                  Integer(title = _("Warning below"), unit = u"°C", default_value = 15),
+                                  Integer(title = _("Critical below"), unit = u"°C", default_value = 12),
+                              ]
+                        )),
+                       ## hotWaterTemperature upper level
+                       ( "level_hotWaterTemperature_max",
+                          Tuple(
+                              help = _("You can adjust the levels before this service goes into warning/critical. Set to 1000 to disable."),
+                              title = _("Water temperature upper Levels (r: hotWaterTemperature)"),
+                              elements = [
+                                  Integer(title = _("Warning at"), unit = u"°C", default_value = 60),
+                                  Integer(title = _("Critical at"), unit = u"°C", default_value = 65),
+                              ]
+                        )),
+                        ## hotWaterTemperature lower level
+                        ( "level_hotWaterTemperature_min",
+                          Tuple(
+                              title = _("Water temperature lower Levels (r: hotWaterTemperature)"),
+                              help = _("You can adjust the levels before this service goes into warning/critical. Set to -1000 to disable."),
+                              elements = [
+                                  Integer(title = _("Warning below"), unit = u"°C", default_value = 40),
+                                  Integer(title = _("Critical below"), unit = u"°C", default_value = 37),
+                              ]
+                        )),
+                       ## hotGasTemperature upper level
+                       ( "level_hotGasTemperature_max",
+                          Tuple(
+                              help = _("You can adjust the levels before this service goes into warning/critical. Set to 1000 to disable."),
+                              title = _("Gas temperature upper Levels (r: hotGasTemperature)"),
+                              elements = [
+                                  Integer(title = _("Warning at"), unit = u"°C", default_value = 0),
+                                  Integer(title = _("Critical at"), unit = u"°C", default_value = 0),
+                              ]
+                        )),
+                        ## hotGasTemperature lower level
+                        ( "level_hotGasTemperature_min",
+                          Tuple(
+                              title = _("Gas temperature lower Levels (r: hotGasTemperature)"),
+                              help = _("You can adjust the levels before this service goes into warning/critical. Set to -1000 to disable."),
+                              elements = [
+                                  Integer(title = _("Warning below"), unit = u"°C", default_value = 0),
+                                  Integer(title = _("Critical below"), unit = u"°C", default_value = 0),
+                              ]
+                        )),
+                       ## returnTemperature upper level
+                       ( "level_returnTemperature_max",
+                          Tuple(
+                              help = _("You can adjust the levels before this service goes into warning/critical. Set to 1000 to disable."),
+                              title = _("Return temperature upper Levels (r: returnTemperature)"),
+                              elements = [
+                                  Integer(title = _("Warning at"), unit = u"°C", default_value = 0),
+                                  Integer(title = _("Critical at"), unit = u"°C", default_value = 0),
+                              ]
+                        )),
+                        ## returnTemperature lower level
+                        ( "level_returnTemperature_min",
+                          Tuple(
+                              title = _("Return temperature lower Levels (r: returnTemperature)"),
+                              help = _("You can adjust the levels before this service goes into warning/critical. Set to -1000 to disable."),
+                              elements = [
+                                  Integer(title = _("Warning below"), unit = u"°C", default_value = 0),
+                                  Integer(title = _("Critical below"), unit = u"°C", default_value = 0),
+                              ]
+                        )),
+                        ## opModeHeating
+                        ("var_opModeHeating",
+                         Alternative(
+                            title = _('Operation mode heating (r: opModeHeating)'),
+                            style = "dropdown",
+                            allow_empty = False,
+                            help = _("opModeHeating (default: Automatik)"),
+                            elements = [
+                                FixedValue(
+                                    'Automatik',
+                                    totext = "Automatik",
+                                    title = _("Automatik"),
+                                ),
+                                TextAscii(
+                                    title = _("custom"),
+                                    label = _("custom:"),
+                                    size = 50,
+                                ),
+                           ]
+                        )),
+                        ## opModeHotWater
+                        ("var_opModeHotWater",
+                         Alternative(
+                            title = _('Operation mode heating (r: opModeHotWater)'),
+                            style = "dropdown",
+                            allow_empty = False,
+                            help = _("opModeHotWater (default: Automatik)"),
+                            elements = [ 
+                                FixedValue(
+                                    'Automatik',
+                                    totext = "Automatik",
+                                    title = _("Automatik"),
+                                ),
+                                TextAscii(
+                                    title = _("custom"),
+                                    label = _("custom:"),
+                                    size = 50,
+                                ),
+                           ]
+                        )),
+                        ## heatingSystemCircPump
+                        ("var_heatingSystemCircPump",
+                         Alternative(
+                            title = _('Heating system cirle pump (r: heatingSystemCircPump)'),
+                            style = "dropdown",
+                            allow_empty = False,
+                            help = _("heatingSystemCircPump (default: ignore)"),
+                            elements = [  
+                                FixedValue(
+                                    'on',
+                                    totext = "on",
+                                    title = _("on"),
+                                ),
+                                FixedValue(
+                                    'off',
+                                    totext = "off",
+                                    title = _("off"),
+                                ),
+                                TextAscii(
+                                    title = _("custom"),
+                                    label = _("custom:"),
+                                    size = 50,
+                                ),
+                           ]
+                        )),
+                        ## opStateHeatPump1
+                        ("var_opStateHeatPump1",
+                         Alternative(
+                            title = _('Operation mode heating (r: opStateHeatPump1)'),
+                            style = "dropdown",
+                            allow_empty = False,
+                            help = _("opStateHeatPump1 (default: ignore)"),
+                            elements = [  
+                                TextAscii(
+                                    title = _("custom"),
+                                    label = _("custom:"),
+                                    size = 50,
+                                ),
+                           ]
+                        )),
+
+
+
+
+               ]
+              )),
+
+
+
 
              ],
             )),

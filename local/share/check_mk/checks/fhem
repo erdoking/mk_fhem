@@ -113,8 +113,8 @@ def check_fhem(item, params, info):
         ## show         => print if no error
         ## perfd        => print perfdata
         for key, title, unit, channel, show, perfd in [
-             ##  key                    title                   unit                channel            show        perfd
-             ##  -------                -------                 -------             -------            ----        -----
+             ##  key                            title                   unit                channel            show        perfd
+             ##  -------                        -------                 -------             -------            ----        -----
                 ('temperature',         'temperature',          u'°C',              '',                1,          1),
                 ('desired-temp',        'desiredtemp',          u'°C',              '',                1,          1),
                 ('humidity',            'humidity',             u'%',               '',                1,          1),
@@ -161,6 +161,29 @@ def check_fhem(item, params, info):
                 ('duration_in_traffic', 'duration_in_traffic',  'mins',             '',                1,          1),
                 ## ESPEasy
                 ('presence',            'presence',             '',                 '',                1,          1),
+             ##  key                            title                           unit                channel            show        perfd
+             ##  -------                        -------                         -------             -------            ----        -----
+                ## LUXTRONIK2
+                ('ambientTemperature',          'ambientTemperature',           u'°C',              '',                1,          1),
+                ('averageAmbientTemperature',   'averageAmbientTemperature',    u'°C',              '',                0,          1),
+                ('hotWaterTemperature',         'hotWaterTemperature',          u'°C',              '',                1,          1),
+                ('hotWaterTemperatureTarget',   'hotWaterTemperatureTarget',    u'°C',              '',                0,          1),
+                ('heatingSystemCircPump',       'heatingSystemCircPump',        '',                 '',                0,          1),
+                ('opModeHeating',               'opModeHeating',                '',                 '',                0,          0),
+                ('opModeHotWater',              'opModeHotWater',               '',                 '',                0,          0),
+                ('opStateHeatPump1',            'opStateHeatPump1',             '',                 '',                0,          0),
+                ('hotGasTemperature',           'hotGasTemperature',            u'°C',              '',                1,          1),
+                ('flowTemperature',             'flowTemperature',              u'°C',              '',                1,          1),
+                ('returnTemperature',           'returnTemperature',            u'°C',              '',                1,          1),
+                ('returnTemperatureTarget',     'returnTemperatureTarget',      u'°C',              '',                0,          1),
+#                ('counterHours2ndHeatSource1',  'counterHours2ndHeatSource1',   '',                 '',                0,          0),
+#                ('counterHours2ndHeatSource2',  'counterHours2ndHeatSource2',   '',                 '',                0,          0),
+#                ('counterHoursHeatPump',        'counterHoursHeatPump',         '',                 '',                0,          0),
+#                ('counterHoursHeating',         'counterHoursHeating',          '',                 '',                0,          0),
+#                ('counterHoursHotWater',        'counterHoursHotWater',         '',                 '',                0,          0),
+
+
+
 
 
         ]:
@@ -369,6 +392,24 @@ factory_settings["fhem_default_params"] = {
         "var_RGB_color"                : ("ignore"),       # RGB color hexcode
         "var_brightness"               : ("ignore"),       # color brightness
         "var_state"                    : ("ignore"),       # reading state
+        ## LUXTRONIK2
+        "level_ambientTemperature_max"          : (26, 30),         # warn/crit for max. ambientTemperature
+        "level_ambientTemperature_min"          : (15, 12),         # warn/crit for min. ambientTemperature
+        "level_averageAmbientTemperature_max"   : (26, 30),         # warn/crit for max. averageAmbientTemperature
+        "level_averageAmbientTemperature_min"   : (15, 12),         # warn/crit for min. averageAmbientTemperature
+        "level_hotWaterTemperature_max"         : (60, 65),         # warn/crit for max hotWaterTemperature
+        "level_hotWaterTemperature_min"         : (40, 37),         # warn/crit for min hotWaterTemperature
+#        "level_hotGasTemperature_max"           : (26, 30),         # warn/crit for max hotWaterTemperature
+#        "level_hotGasTemperature_min"           : (15, 12),         # warn/crit for min hotWaterTemperature
+#        "level_returnTemperature_max"           : (35, 38),         # warn/crit for max hotWaterTemperature
+#        "level_returnTemperature_min"           : (25, 23),         # warn/crit for min hotWaterTemperature
+#        "level_flowTemperature_max"             : (35, 38),         # warn/crit for max hotWaterTemperature
+#        "level_flowTemperature_min"             : (25, 23),         # warn/crit for min hotWaterTemperatur
+        "var_heatingSystemCircPump"             : ("ignore"),       # default for heatingSystemCircPump
+        "var_opStateHeatPump1"                  : ("ignore"),       # default for opStateHeatPump1
+        "var_opModeHeating"                     : ("Automatik"),    # default for opModeHeating 
+        "var_opModeHotWater"                    : ("Automatik"),    # default for opModeHotWater
+        
 }
 
 check_info['fhem'] = {

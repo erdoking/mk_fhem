@@ -165,4 +165,40 @@ if (isset($fhem_defines['presence']) ) {
         ;
 }
 
+
+
+# 10. LUXTRONIK2 (ambientTemperature)
+if (isset($fhem_defines['ambientTemperature']) ) {
+   $ds_name[] = 'ambientTemperature';
+   $opt[] = $defopt . "--title \"Ambient temperature\"";
+   $def[] = ""
+        . fhem_area("ambientTemperature",      "80ff40", "ambientTemperature",    "°C",  FALSE)
+        . fhem_curve("LINE2", "averageAmbientTemperature",      "408f20", "averageAmbientTemperature",   "°C",  FALSE)
+        ;
+}
+
+
+# 11. LUXTRONIK2 (hotWaterTemperature)
+if (isset($fhem_defines['hotWaterTemperature']) ) {
+   $ds_name[] = 'hotWaterTemperature';
+   $opt[] = $defopt . "--title \"hot wasser temperature\"";
+   $def[] = ""
+        . fhem_area("hotWaterTemperature",      "00bfff", "hotWaterTemperature",         "°C",  FALSE)
+        . fhem_curve("LINE2", "hotWaterTemperatureTarget","00008B", "hotWaterTemperatureTarget",   "°C",  FALSE)
+        ;
+}
+
+
+# 12. LUXTRONIK2 (returnTemperature)
+if (isset($fhem_defines['returnTemperature']) ) {
+   $ds_name[] = 'returnTemperature';
+   $opt[] = $defopt . "--title \"return temperature + flow temperature\"";
+   $def[] = ""
+        . fhem_area("returnTemperature", "ffd700", "returnTemperature", "°C",  FALSE)
+        . fhem_curve("LINE2", "flowTemperature", "00bfff", "flowTemperature", "°C",  FALSE)
+        . fhem_curve("LINE2", "returnTemperatureTarget","ee0000", "returnTemperatureTarget",   "°C",  FALSE)
+        ;
+}
+
+
 ?>
