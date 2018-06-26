@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
  - new agent with supprt for empty readings
+ - change req. check_mk version to 1.2.8 [thanks to mab]
 
 ## [0.9.1] - 2018-06-25
 ### Added
