@@ -178,9 +178,9 @@ def check_fhem(item, params, info):
                 ('returnTemperatureTarget',     'returnTemperatureTarget',      u'°C',              '',                0,          1),
 #                ('counterHours2ndHeatSource1',  'counterHours2ndHeatSource1',   '',                 '',                0,          0),
 #                ('counterHours2ndHeatSource2',  'counterHours2ndHeatSource2',   '',                 '',                0,          0),
-#                ('counterHoursHeatPump',        'counterHoursHeatPump',         '',                 '',                0,          0),
-#                ('counterHoursHeating',         'counterHoursHeating',          '',                 '',                0,          0),
-#                ('counterHoursHotWater',        'counterHoursHotWater',         '',                 '',                0,          0),
+                ('counterHoursHeatPump',        'counterHoursHeatPump',         '',                 '',                1,          1),
+                ('counterHoursHeating',         'counterHoursHeating',          '',                 '',                1,          1),
+                ('counterHoursHotWater',        'counterHoursHotWater',         '',                 '',                1,          1),
 
 
 

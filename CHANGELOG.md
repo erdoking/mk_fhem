@@ -3,8 +3,12 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
- - new agent with supprt for empty readings
- - change req. check_mk version to 1.2.8 [thanks to mab]
+ - new agent with suppurt for empty readings
+
+## [0.9.2] - 2018-07-03
+### Added
+ - change req. check_mk version to 1.2.8 [thanks to mab] 
+ - support for more Luxtronik 2.0 readings (counterHoursHeatPump,counterHoursHeating,counterHoursHotWater) [thanks to mab]
 
 ## [0.9.1] - 2018-06-25
 ### Added

@@ -201,4 +201,29 @@ if (isset($fhem_defines['returnTemperature']) ) {
 }
 
 
+# 13. LUXTRONIK2 (counterHoursHeatPump)
+if (isset($fhem_defines['counterHoursHeatPump']) ) {
+   $ds_name[] = 'counterHoursHeatPump';
+   $opt[] = $defopt . "--title \"counter Hours Heating\"";
+   $def[] = ""
+        . fhem_area("counterHoursHeatPump", "00EE76", "counterHoursHeatPump", "h",  FALSE)
+#        . fhem_curve("LINE2", "counterHoursHeating", "00bfff", "counterHoursHeating", "h",  FALSE)
+#        . fhem_area("counterHoursHotWater","ee0000", "counterHoursHotWater",   "h",  FALSE)
+#        . fhem_curve("LINE3", "counterHoursHeating", "00bfff", "counterHoursHeating", "h",  FALSE)
+
+
+        ;
+}
+
+# 14. LUXTRONIK2 (counterHoursHeating)
+if (isset($fhem_defines['counterHoursHeating'])  or isset($fhem_defines['counterHoursHotWater'])) {
+   $ds_name[] = 'counterHoursHeating';
+   $opt[] = $defopt . "--title \"counterHoursHotWater + counterHoursHeating\"";
+   $def[] = ""
+        . fhem_area("counterHoursHotWater","ffd700", "counterHoursHotWater",   "h",  FALSE)
+        . fhem_area("counterHoursHeating", "ee0000", "counterHoursHeating", "h",  FALSE)
+        ;
+}
+
+
 ?>
