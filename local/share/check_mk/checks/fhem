@@ -295,22 +295,22 @@ def check_fhem(item, params, info):
                             ## check critical level (max/min)
                             if ( (upper_crit != 0 and float(value) >= upper_crit) or (lower_crit != 0 and float(value) <= lower_crit) ) and not ignoreit:
                                 if upper_crit != 0 and float(value) >= upper_crit:
-                                        display_value = ('%s%s (warn/crit at %s%s/%s%s) (!!)' % ( value, unit, upper_warn, unit, upper_crit, unit))
+                                        display_value = ('%s %s (warn/crit at %s %s/%s %s) (!!)' % ( value, unit, upper_warn, unit, upper_crit, unit))
                                 elif float(value) <= lower_crit:
-                                        display_value = ('%s%s (warn/crit at %s%s/%s%s) (!!)' % ( value, unit, lower_warn, unit, lower_crit, unit)) 
+                                        display_value = ('%s %s (warn/crit at %s %s/%s %s) (!!)' % ( value, unit, lower_warn, unit, lower_crit, unit)) 
                                 errorlevel = 2
                             ## check warning level (max/min)
                             elif ( (upper_warn != 0 and float(value) >= upper_warn) or (lower_warn != 0 and float(value) <= lower_warn) ) and not ignoreit:
                                 if upper_warn != 0 and float(value) >= upper_warn:
-                                        display_value = ('%s%s (warn/crit at %s%s/%s%s) (!)' % ( value, unit, upper_warn, unit, upper_crit, unit))
+                                        display_value = ('%s %s (warn/crit at %s %s/%s %s) (!)' % ( value, unit, upper_warn, unit, upper_crit, unit))
                                 elif float(value) <= lower_warn:
-                                        display_value = ('%s%s (warn/crit at %s%s/%s%s) (!)' % ( value, unit, lower_warn, unit, lower_crit, unit))
+                                        display_value = ('%s %s (warn/crit at %s %s/%s %s) (!)' % ( value, unit, lower_warn, unit, lower_crit, unit))
                                 warnlevel = 1
                             elif fetch_plain:
                                 ## just alert if value not identic or ignored
                                 if value == fetch_plain or fetch_plain == "ignore":
                                         if show:
-                                                display_value = ('%s%s' % ( value, unit ))
+                                                display_value = ('%s %s' % ( value, unit ))
                                         if perfd:
                                                 perfdata.append( ( title, 1, "" ) )
                                 else:
@@ -320,7 +320,7 @@ def check_fhem(item, params, info):
                                                 perfdata.append( ( title, 0, "" ) )
                             ## define output
                             elif show:
-                                display_value = ('%s%s' % ( value, unit))
+                                display_value = ('%s %s' % ( value, unit))
 
 
                             ## define perfdata (just add numeric values)
