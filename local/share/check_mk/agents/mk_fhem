@@ -6,7 +6,7 @@ use JSON qw( );
 use Data::Dumper;
 
 ## change path / port here if necessary 
-my $fhem_outpout = `/opt/fhem/fhem.pl 7072 "jsonlist2 TYPE=.*:FILTER=state=..*:FILTER=model!=CCU-FHEM:FILTER=model!=ActionDetector"`;
+my $fhem_outpout = `/opt/fhem/fhem.pl 7072 "jsonlist2 TYPE=.*:FILTER=state=..*:FILTER=model!=CCU-FHEM:FILTER=TYPE!=CCU-FHEM|ActionDetector|at|notify|statistics|DOIF"`;
 
 ## special device types to be monitored
 ## normaly filtered out
