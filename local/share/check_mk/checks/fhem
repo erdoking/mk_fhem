@@ -53,18 +53,6 @@ def check_fhem(item, params, info):
         if "level_temp_min" in params:
                 tmin_warn, tmin_crit = params["level_temp_min"]
 
-
-        # See if any checks are diabled (set to 0)
-#        if dage_warn != None and dage_warn == 0:
-#                dage_warn = None;
-#        if dage_crit != None and dage_crit == 0:
-#                dage_crit = None;
-#        if cbwarn != None and cbwarn == 0:
-#                cbwarn = None;
-#        if cbcrit != None and cbcrit == 0:
-#                cbcrit = None;
-        
-
         errorlevel, warnlevel = 0, 0
 
         dev_model = ""
