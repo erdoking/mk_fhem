@@ -113,8 +113,8 @@ def check_fhem(item, params, info):
         ## show         => print if no error
         ## perfd        => print perfdata
         for key, title, unit, channel, show, perfd in [
-             ##  key                            title                   unit                channel            show        perfd
-             ##  -------                        -------                 -------             -------            ----        -----
+             ##  key                    title                   unit                channel            show        perfd
+             ##  -------                -------                 -------             -------            ----        -----
                 ('temperature',         'temperature',          u'°C',              '',                1,          1),
                 ('desired-temp',        'desiredtemp',          u'°C',              '',                1,          1),
                 ('humidity',            'humidity',             u'%',               '',                1,          1),
@@ -135,6 +135,11 @@ def check_fhem(item, params, info):
                 ('R-globalBtnLock',     'globalBtnLock',        '',                 '',                0,          0),
                 ('R-modusBtnLock',      'modusBtnLock',         '',                 '',                0,          0),
                 ('R-tempOffset',        'tempOffset',           'K',                'Clima',           1,          0),
+                ## MAX!
+                ('desiredTemperature',  'desiredtemp',          u'°C',              '',                1,          1),
+                ('mode',                'mode',                 '',                 '',                0,          0),
+                ('window',              'window',               '',                 '',                1,          0),
+                ('groupid',             'groupid',              '',                 '',                1,          0),
                 ## MilightDevice, WifiLight, ... 
                 ('brightness',          'brightness',           u'%',               '',                1,          1),
                 ('brightness_on',       'brightness_on',        u'%',               '',                0,          1),
@@ -394,9 +399,13 @@ factory_settings["fhem_default_params"] = {
         "var_btnLock"                  : ("ignore"),       # simple button lock
         "var_globalBtnLock"            : ("ignore"),       # full button lock
         "var_modusBtnLock"             : ("ignore"),       # modus button lock
+        "var_controlMode"              : ("auto"),         # controlMode
         "var_RGB_color"                : ("ignore"),       # RGB color hexcode
         "var_brightness"               : ("ignore"),       # color brightness
         "var_state"                    : ("ignore"),       # reading state
+        ## MAX!
+        "var_mode"                     : ("auto"),         # like controlMode on HomeMatic devices 
+        "var_window"                   : ("ignore"),       # like contact on HomeMatic devices
         ## LUXTRONIK2
         "level_ambientTemperature_max"          : (26, 30),         # warn/crit for max. ambientTemperature
         "level_ambientTemperature_min"          : (15, 12),         # warn/crit for min. ambientTemperature

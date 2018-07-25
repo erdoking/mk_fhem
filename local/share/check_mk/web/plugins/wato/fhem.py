@@ -550,6 +550,75 @@ register_check_parameters(
                ]
               )),
               ## ----------------------------------------------------
+              ## Sub-category MAX!
+              ## ----------------------------------------------------
+              ('max_params', Dictionary(
+               title = "MAX!",
+               help = _("MAX! specific parameter"),
+               allow_empty = False,
+               elements = [
+                        ("var_mode",
+                         Alternative(
+                            title = _('Control Mode'),
+                            style = "dropdown",
+                            allow_empty = False,
+                            help = _("Check current control mode. (default: ignore)"),
+                            elements = [
+                                FixedValue(
+                                    'auto',
+                                    totext = "auto",
+                                    title = _("auto"),
+                                ),
+                                FixedValue(
+                                    'manual',
+                                    totext = "manual",
+                                    title = _("manual"),
+                                ),
+                                FixedValue(
+                                    'temporary',
+                                    totext = "temporary",
+                                    title = _("temporary"),
+                                ),
+                                FixedValue(
+                                    'boost',
+                                    totext = "boost",
+                                    title = _("boost"),
+                                ),
+                                TextAscii(
+                                    title = _("custom"),
+                                    label = _("custom:"),
+                                    size = 50,
+                                ),
+                           ]
+                        )),
+                        ("var_window",
+                         Alternative(
+                            title = _('window state (r: window)'),
+                            style = "dropdown",
+                            allow_empty = False,
+                            help = _("Check state of reading 'window' (default: ignore) "),
+                            elements = [
+                                FixedValue(
+                                    'open',
+                                    totext = "open",
+                                    title = _("open"),
+                                ),
+                                FixedValue(
+                                    'closed',
+                                    totext = "closed",
+                                    title = _("closed"),
+                                ),
+                                TextAscii(
+                                    title = _("custom"),
+                                    label = _("custom:"),
+                                    size = 50,
+                                ),
+                           ]
+                       )),
+               ]
+              )),
+
+              ## ----------------------------------------------------
               ## Sub-category Luxtronik
               ## ----------------------------------------------------
               ('luxtronik2_params', Dictionary(
