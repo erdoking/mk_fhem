@@ -2,7 +2,7 @@
 
 check_MK Plugin für FHEM
 
-Getestet mit CheckMK 1.4.0p33 (Stand: 06.2018)
+Getestet mit CheckMK 1.4.0p34 (Stand: 09.2018)
 FHEM-Forum: https://forum.fhem.de/index.php/topic,63723.0.html
 
 ACHTUNG! In Version v0.9 hat sich die WATO Konfiguration massiv geändert, ältere WATO-Konfigurationen funktinieren nicht mehr und müssen neu erstellt werden!
@@ -24,10 +24,14 @@ ACHTUNG! In Version v0.9 hat sich die WATO Konfiguration massiv geändert, älte
 * Unterschützung von HomeMatic-Channel
 
 ## Installation
-* Dateien auf den checkMK-Server kopieren (~/local/share/check_mk)
-* local/share/check_mk/agents/mk_fhem auf dem FHEM-Server nach /usr/lib/check_mk_agent/plugins/ kopieren
+* Installatation des mkp:
+  * mkp install fhem-<<version>>.mkp
+* Agent-Plugin auf dem FHEM-Server nach /usr/lib/check_mk_agent/plugins/ kopieren
+  * ~/local/share/check_mk/agents/mk_fhem 
+  * ODER https://<<UrlVonCheckMK>>/<<sitename>>/check_mk/agents/plugins/mk_fhem
 * chmod +x /usr/lib/check_mk_agent/plugins/mk_fhem
 * ggf. telnet Passwort/Port anpassen
+  * vi /usr/lib/check_mk_agent/plugins/mk_fhem
 
 ## ToDo
 * Einbindung weiterer Geräte/Hersteller
