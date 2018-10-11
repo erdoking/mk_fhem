@@ -166,6 +166,11 @@ def check_fhem(item, params, info):
                 ('duration_in_traffic', 'duration_in_traffic',  'mins',             '',                1,          1),
                 ## ESPEasy
                 ('presence',            'presence',             '',                 '',                1,          1),
+                ## XiaomiFlowerSens
+                ('fertility',           'fertility',            '',                 '',                1,          1),
+                ('lux',                 'lux',                  'lx',               '',                1,          1),
+                ('moisture',            'moisture',             u'%',               '',                1,          1),
+
              ##  key                            title                           unit                channel            show        perfd
              ##  -------                        -------                         -------             -------            ----        -----
                 ## LUXTRONIK2

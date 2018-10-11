@@ -62,7 +62,7 @@ if (isset($fhem_defines['temperature']) && isset($fhem_defines['humidity']) ) {
 }
 
 # 2. Temperature
-if (isset($fhem_defines['temperature']) ) {
+if (isset($fhem_defines['temperature']) or isset($fhem_defines['moisture'])) {
    $ds_name[] = 'temperature';
    $opt[] = $defopt . "--title \"Temperature\"";
    $def[] = ""
@@ -70,6 +70,8 @@ if (isset($fhem_defines['temperature']) ) {
         . fhem_line("desiredtemp",      "408f20", "Desired temp",   "°C",  FALSE)
         . fhem_area("dewpoint",         "B40404", "Dewpoint",       "°C",  FALSE)  
         . fhem_line("valveposition",    "00bfff", "Valve position", "%% ",  FALSE)
+        ## XiaomiFlowerSens
+        . fhem_curve("LINE2", "moisture", "00bfff", "moisture", "%%",  FALSE)
         ;
 }
 
@@ -216,7 +218,7 @@ if (isset($fhem_defines['counterHoursHeatPump']) ) {
 }
 
 # 14. LUXTRONIK2 (counterHoursHeating)
-if (isset($fhem_defines['counterHoursHeating'])  or isset($fhem_defines['counterHoursHotWater'])) {
+if (isset($fhem_defines['counterHoursHeating']) or isset($fhem_defines['counterHoursHotWater'])) {
    $ds_name[] = 'counterHoursHeating';
    $opt[] = $defopt . "--title \"counterHoursHotWater + counterHoursHeating\"";
    $def[] = ""
@@ -225,5 +227,16 @@ if (isset($fhem_defines['counterHoursHeating'])  or isset($fhem_defines['counter
         ;
 }
 
+
+# 15. XiaomiFlowerSens (fertility)
+if (isset($fhem_defines['fertility']) or isset($fhem_defines['lux'])) {
+   $ds_name[] = '';
+   $opt[] = $defopt . "--title \"fertility\"";
+   $def[] = ""
+        . fhem_area("fertility","ffd700", "fertility",   "",  FALSE)
+        . fhem_curve("LINE2", "lux", "ee0000", "lux", "lx",  FALSE)
+        . fhem_curve("LINE2", "moisture", "00bfff", "moisture", "%%",  FALSE)
+        ;
+}
 
 ?>
