@@ -343,9 +343,7 @@ def check_fhem(item, params, info):
                             ## define perfdata (just add numeric values)
                             if perfd and not fetch_plain:
                                 ## transform on/off (HomeMatic/MAX desiredTemp)
-                                if value == "on":
-                                        value = 100
-                                if value == "off":
+                                if value == "off" or value == "on":
                                         value = 0
                                 perfdata.append( ( title, value, upper_warn, upper_crit, "", "" ) )
 
