@@ -28,7 +28,7 @@ ACHTUNG! In Version v0.9 hat sich die WATO Konfiguration massiv geändert, älte
   * mkp install fhem-<<version>>.mkp
 * Agent-Plugin auf dem FHEM-Server nach /usr/lib/check_mk_agent/plugins/ kopieren
   * ~/local/share/check_mk/agents/mk_fhem 
-  * ODER https://<<UrlVonCheckMK>>/<<sitename>>/check_mk/agents/plugins/mk_fhem
+  * ODER https://\<\<UrlVonCheckMK\>\>/\<\<sitename\>\>/check_mk/agents/plugins/mk_fhem
 * chmod +x /usr/lib/check_mk_agent/plugins/mk_fhem
 * ggf. telnet Passwort/Port anpassen
   * vi /usr/lib/check_mk_agent/plugins/mk_fhem
