@@ -37,3 +37,6 @@ ACHTUNG! In Version v0.9 hat sich die WATO Konfiguration massiv geändert, älte
 * Einbindung weiterer Geräte/Hersteller
 * Perf-O-Meter
 * Aufnahme weiterer Überwachungs-Parameter (Readings,...)
+
+## Known Bugs
+* batteryLevel wird bei den meisten Herstellern als Volt geschicht, bei FlowerCare aber als Prozent. (Einheit wird als V ausgegeben)
