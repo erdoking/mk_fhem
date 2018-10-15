@@ -426,6 +426,9 @@ factory_settings["fhem_default_params"] = {
         "var_opStateHeatPump1"                  : ("ignore"),       # default for opStateHeatPump1
         "var_opModeHeating"                     : ("Automatik"),    # default for opModeHeating 
         "var_opModeHotWater"                    : ("Automatik"),    # default for opModeHotWater
+        ## 
+        "level_moisture_min"                    : (20, 10),         # warn/crit for moisture
+
         
 }
 

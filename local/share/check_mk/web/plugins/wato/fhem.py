@@ -793,6 +793,39 @@ register_check_parameters(
                ]
               )),
 
+              ## ----------------------------------------------------
+              ## Sub-category XiaomiFlowerSens
+              ## ----------------------------------------------------
+              ('xiaomi_params', Dictionary(
+               title = "Xiaomi",
+               help = _("XiaomiFlowerSens specific parameter"),
+               allow_empty = False,
+               elements = [
+                        ## fertility lower level
+                        ( "level_fertility_min",
+                          Tuple(
+                              title = _("fertility lower Levels (r: fertility)"),
+                              help = _("You can adjust the levels before this service goes into warning/critical. Set to 0 to disable."),
+                              elements = [
+                                  Integer(title = _("Warning below"), default_value = 0),
+                                  Integer(title = _("Critical below"), default_value = 0),
+                              ]
+                        )),
+
+                        ## moisture lower level
+                        ( "level_moisture_min",
+                          Tuple(
+                              title = _("moisture lower Levels (r: moisture)"),
+                              help = _("You can adjust the levels before this service goes into warning/critical. Set to 0 to disable."),
+                              elements = [
+                                  Integer(title = _("Warning below"), unit = u"%", default_value = 20),
+                                  Integer(title = _("Critical below"), unit = u"%", default_value = 10),
+                              ]
+                        )),
+
+               ]
+              )),
+
 
 
 
