@@ -3,7 +3,15 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
- - new agent with suppurt for empty readings
+ - new agent with support for empty readings
+
+## [0.9.3] - 2018-10-15
+### Added
+ - support for MAX! readings (desiredTemperature,mode,window,groupid)
+ - support for XiaomiFlowerSens readings (fertility,lux,moisture)
+
+### Changed
+ - tranform on/off (HomeMatic/MAX desiredTemp) to zero
 
 ## [0.9.2] - 2018-07-03
 ### Added
