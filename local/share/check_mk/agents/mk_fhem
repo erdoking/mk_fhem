@@ -74,9 +74,14 @@ foreach my $device (sort keys %devices ){
         foreach my $channel (sort keys %{$devices{$device}}){   
                 ## get device readings  
                 foreach my $reading (sort keys %{$devices{$device}{$channel}{Readings}}){
-                        if ( "$reading" !~ /RegL_\d+/) {
+                                
+                        ## trim value
+                        my $value = "$devices{$device}{$channel}{Readings}{$reading}{Value}";
+                        $value =~ s/^\s+|\s+$//g;
+                
+                        if (( "$reading" !~ /RegL_\d+/ ) and ( "$value" ne "" )) {
                                 ## e.g: $devices{eg.wz.thermostat}{Readings}{model} = HM-SEC-SCo
-                                printf("%-20s %-20s %-30s   %-20s %s\n","", $devices{$device}{$channel}{Readings}{$reading}{Time}, $channel, $reading, $devices{$device}{$channel}{Readings}{$reading}{Value});
+                                printf("%-20s %-20s %-30s   %-20s %s\n","", $devices{$device}{$channel}{Readings}{$reading}{Time}, $channel, $reading, $value);
                         }
                 }
         }
