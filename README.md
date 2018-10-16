@@ -3,6 +3,7 @@
 check_MK Plugin für FHEM
 
 Getestet mit CheckMK 1.5.0p6 (Stand: 10.2018)
+
 FHEM-Forum: https://forum.fhem.de/index.php/topic,63723.0.html
 
 ACHTUNG! In Version v0.9 hat sich die WATO Konfiguration massiv geändert, ältere WATO-Konfigurationen funktinieren nicht mehr und müssen neu erstellt werden!
