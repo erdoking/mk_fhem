@@ -550,6 +550,75 @@ register_check_parameters(
                ]
               )),
               ## ----------------------------------------------------
+              ## Sub-category MAX!
+              ## ----------------------------------------------------
+              ('max_params', Dictionary(
+               title = "MAX!",
+               help = _("MAX! specific parameter"),
+               allow_empty = False,
+               elements = [
+                        ("var_mode",
+                         Alternative(
+                            title = _('Control Mode'),
+                            style = "dropdown",
+                            allow_empty = False,
+                            help = _("Check current control mode. (default: ignore)"),
+                            elements = [
+                                FixedValue(
+                                    'auto',
+                                    totext = "auto",
+                                    title = _("auto"),
+                                ),
+                                FixedValue(
+                                    'manual',
+                                    totext = "manual",
+                                    title = _("manual"),
+                                ),
+                                FixedValue(
+                                    'temporary',
+                                    totext = "temporary",
+                                    title = _("temporary"),
+                                ),
+                                FixedValue(
+                                    'boost',
+                                    totext = "boost",
+                                    title = _("boost"),
+                                ),
+                                TextAscii(
+                                    title = _("custom"),
+                                    label = _("custom:"),
+                                    size = 50,
+                                ),
+                           ]
+                        )),
+                        ("var_window",
+                         Alternative(
+                            title = _('window state (r: window)'),
+                            style = "dropdown",
+                            allow_empty = False,
+                            help = _("Check state of reading 'window' (default: ignore) "),
+                            elements = [
+                                FixedValue(
+                                    'open',
+                                    totext = "open",
+                                    title = _("open"),
+                                ),
+                                FixedValue(
+                                    'closed',
+                                    totext = "closed",
+                                    title = _("closed"),
+                                ),
+                                TextAscii(
+                                    title = _("custom"),
+                                    label = _("custom:"),
+                                    size = 50,
+                                ),
+                           ]
+                       )),
+               ]
+              )),
+
+              ## ----------------------------------------------------
               ## Sub-category Luxtronik
               ## ----------------------------------------------------
               ('luxtronik2_params', Dictionary(
@@ -720,6 +789,39 @@ register_check_parameters(
 
 
 
+
+               ]
+              )),
+
+              ## ----------------------------------------------------
+              ## Sub-category XiaomiFlowerSens
+              ## ----------------------------------------------------
+              ('xiaomi_params', Dictionary(
+               title = "Xiaomi",
+               help = _("XiaomiFlowerSens specific parameter"),
+               allow_empty = False,
+               elements = [
+                        ## fertility lower level
+                        ( "level_fertility_min",
+                          Tuple(
+                              title = _("fertility lower Levels (r: fertility)"),
+                              help = _("You can adjust the levels before this service goes into warning/critical. Set to 0 to disable."),
+                              elements = [
+                                  Integer(title = _("Warning below"), default_value = 0),
+                                  Integer(title = _("Critical below"), default_value = 0),
+                              ]
+                        )),
+
+                        ## moisture lower level
+                        ( "level_moisture_min",
+                          Tuple(
+                              title = _("moisture lower Levels (r: moisture)"),
+                              help = _("You can adjust the levels before this service goes into warning/critical. Set to 0 to disable."),
+                              elements = [
+                                  Integer(title = _("Warning below"), unit = u"%", default_value = 20),
+                                  Integer(title = _("Critical below"), unit = u"%", default_value = 10),
+                              ]
+                        )),
 
                ]
               )),
