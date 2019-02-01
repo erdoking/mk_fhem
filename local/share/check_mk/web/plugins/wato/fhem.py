@@ -827,8 +827,38 @@ register_check_parameters(
               )),
 
 
+              ## ----------------------------------------------------
+              ## Sub-category MQTT2
+              ## ----------------------------------------------------
+              ('mqtt2_params', Dictionary(
+               title = "MQTT2",
+               help = _("MQTT2 specific parameter"),
+               allow_empty = False,
+               elements = [
+                       ## LWT - Der Letzte Wille, das Testament (reading)
+                       ("var_lwt",
+                         Alternative(
+                            title = _('LWT (r: LWT)'),
+                            style = "dropdown",
+                            allow_empty = False,
+                            help = _("Check state of reading 'LWT' (default: ignore) "),
+                            elements = [
+                                FixedValue(
+                                    'Online',
+                                    totext = "Online",
+                                    title = _("Online"),
+                                ),
+                                TextAscii(
+                                    title = _("custom"),
+                                    label = _("custom:"),
+                                    size = 50,
+                                ),
+                           ]
 
+                        )),
 
+               ]
+              )),
              ],
             )),
 

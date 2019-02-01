@@ -170,6 +170,8 @@ def check_fhem(item, params, info):
                 ('fertility',           'fertility',            '',                 '',                1,          1),
                 ('lux',                 'lux',                  'lx',               '',                1,          1),
                 ('moisture',            'moisture',             u'%',               '',                1,          1),
+                ## MQTT2
+                ('LWT',                 'LWT',                  '',                 '',                1,          0),
 
              ##  key                            title                           unit                channel            show        perfd
              ##  -------                        -------                         -------             -------            ----        -----
@@ -409,6 +411,8 @@ factory_settings["fhem_default_params"] = {
         ## MAX!
         "var_mode"                     : ("auto"),         # like controlMode on HomeMatic devices 
         "var_window"                   : ("ignore"),       # like contact on HomeMatic devices
+        ## MQTT2
+        "var_lwt"                      : ("ignore"),       # LWT - the last will
         ## LUXTRONIK2
         "level_ambientTemperature_max"          : (26, 30),         # warn/crit for max. ambientTemperature
         "level_ambientTemperature_min"          : (15, 12),         # warn/crit for min. ambientTemperature
