@@ -204,7 +204,7 @@ register_check_parameters(
                         ( "level_dewpoint_max",
                           Tuple(
                               title = _("diff to temperatur"),
-                              help = _("exp. 17°C [dewp] vs 20°C [temp] (r: dewpoint) "),
+                              help = _("exp. 17"+ u"°C" + "[dewp] vs 20"+ u"°C" + " [temp] (r: dewpoint) "),
                               elements = [
                                   Integer(title = _("Warning below"), unit = u"°C", default_value = 3),
                                   Integer(title = _("Critical below"), unit = u"°C", default_value = 1),
