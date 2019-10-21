@@ -2,7 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased]
+## [0.9.4] - 2019-10-21
+### Changed
+ - Fix for WATO-Konfiguration on CheckMK 1.6 (thanks to f-zappa) 
  - new agent with support for empty readings
 
 ## [0.9.3] - 2018-10-15
