@@ -476,7 +476,7 @@ register_check_parameters(
                     title = _('Control Mode'),
                     style = "dropdown",
                     allow_empty = False,
-                    help = _("Check current control mode. (default: ignore)"),
+                    help = _("Check current control mode. (default: auto)"),
                     elements = [
                         FixedValue(
                             'auto',
