@@ -32,7 +32,6 @@ register_check_parameters(
                          Alternative(
                             title = _('Decice state (r: state)'),
                             style = "dropdown",
-                            allow_empty = False,
                             help = _("Check state of reading 'state' (default: ignore) "),
                             elements = [
                                 FixedValue(
@@ -54,7 +53,6 @@ register_check_parameters(
                          Alternative(
                             title = _('Decice presence (r: presence)'),
                             style = "dropdown",
-                            allow_empty = False,
                             help = _("Check state of reading 'presence' (default: present) "),
                             elements = [
                                 FixedValue(
@@ -95,7 +93,6 @@ register_check_parameters(
                          Alternative(
                             title = _('State of battery (r: battery'),
                             style = "dropdown",
-                            allow_empty = False,
                             help = _("Check state of reading 'battery' (default: ok) "),
                             elements = [
                                 FixedValue(
@@ -215,7 +212,6 @@ register_check_parameters(
                          Alternative(
                             title = _('ignore humidity (r: humidity+dewpoint)'),
                             style = "dropdown",
-                            allow_empty = False,
                             help = _("don't alert humidity if dewpoint given. (default: true)"),
                             elements = [
                                 FixedValue(
@@ -300,7 +296,6 @@ register_check_parameters(
                          Alternative(
                             title = _('RGB color (r: RGB)'),
                             style = "dropdown",
-                            allow_empty = False,
                             help = _("Check state of reading 'RGB' (without #)"),
                             elements = [
                                 FixedValue(
@@ -320,7 +315,6 @@ register_check_parameters(
                          Alternative(
                             title = _('light brightness (r: brightness)'),
                             style = "dropdown",
-                            allow_empty = False,
                             help = _("Check state of reading 'brightness' (default: ignore) "),
                             elements = [
                                 FixedValue(
@@ -355,7 +349,6 @@ register_check_parameters(
                          Alternative(
                             title = _('Contact state (r: contact)'),
                             style = "dropdown",
-                            allow_empty = False,
                             help = _("Check state of reading 'contact' (default: ignore) "),
                             elements = [
                                 FixedValue(
@@ -394,13 +387,11 @@ register_check_parameters(
               ('homematic_params', Dictionary(
                title = "HomeMatic",
                help = _("HomeMatic specific parameter"),
-               allow_empty = False,
                elements = [
                ("var_btnLock",
                  Alternative(
                     title = _('btnLock state'),
                     style = "dropdown",
-                    allow_empty = False,
                     help = _("Check state of reading 'btnLock' (default: ignore) "),
                     elements = [
                         FixedValue(
@@ -425,7 +416,6 @@ register_check_parameters(
                  Alternative(
                     title = _('globalBtnLock state'),
                     style = "dropdown",
-                    allow_empty = False,
                     help = _("Check state of reading 'globalBtnLock' [default: ignore] (r: globalBtnLock) "),
                     elements = [
                         FixedValue(
@@ -450,7 +440,6 @@ register_check_parameters(
                  Alternative(
                     title = _('modusBtnLock state'),
                     style = "dropdown",
-                    allow_empty = False,
                     help = _("Check state of reading 'modusBtnLock' [default: ignore] (r: modusBtnLock) "),
                     elements = [
                         FixedValue(
@@ -475,7 +464,6 @@ register_check_parameters(
                  Alternative(
                     title = _('Control Mode'),
                     style = "dropdown",
-                    allow_empty = False,
                     help = _("Check current control mode. (default: auto)"),
                     elements = [
                         FixedValue(
@@ -516,7 +504,6 @@ register_check_parameters(
                          Alternative(
                             title = _('Decice activity (r: activity)'),
                             style = "dropdown",
-                            allow_empty = False,
                             help = _("Check state of reading 'activity' (default: alive) "),
                             elements = [
                                 FixedValue(
@@ -555,13 +542,11 @@ register_check_parameters(
               ('max_params', Dictionary(
                title = "MAX!",
                help = _("MAX! specific parameter"),
-               allow_empty = False,
                elements = [
                         ("var_mode",
                          Alternative(
                             title = _('Control Mode'),
                             style = "dropdown",
-                            allow_empty = False,
                             help = _("Check current control mode. (default: ignore)"),
                             elements = [
                                 FixedValue(
@@ -595,7 +580,6 @@ register_check_parameters(
                          Alternative(
                             title = _('window state (r: window)'),
                             style = "dropdown",
-                            allow_empty = False,
                             help = _("Check state of reading 'window' (default: ignore) "),
                             elements = [
                                 FixedValue(
@@ -624,7 +608,6 @@ register_check_parameters(
               ('luxtronik2_params', Dictionary(
                title = "Luxtronik",
                help = _("Luxtronik specific parameter"),
-               allow_empty = False,
                elements = [
                        ## ambientTemperature upper level
                        ( "level_ambientTemperature_max",
@@ -711,7 +694,6 @@ register_check_parameters(
                          Alternative(
                             title = _('Operation mode heating (r: opModeHeating)'),
                             style = "dropdown",
-                            allow_empty = False,
                             help = _("opModeHeating (default: Automatik)"),
                             elements = [
                                 FixedValue(
@@ -731,7 +713,6 @@ register_check_parameters(
                          Alternative(
                             title = _('Operation mode heating (r: opModeHotWater)'),
                             style = "dropdown",
-                            allow_empty = False,
                             help = _("opModeHotWater (default: Automatik)"),
                             elements = [ 
                                 FixedValue(
@@ -751,7 +732,6 @@ register_check_parameters(
                          Alternative(
                             title = _('Heating system cirle pump (r: heatingSystemCircPump)'),
                             style = "dropdown",
-                            allow_empty = False,
                             help = _("heatingSystemCircPump (default: ignore)"),
                             elements = [  
                                 FixedValue(
@@ -776,7 +756,6 @@ register_check_parameters(
                          Alternative(
                             title = _('Operation mode heating (r: opStateHeatPump1)'),
                             style = "dropdown",
-                            allow_empty = False,
                             help = _("opStateHeatPump1 (default: ignore)"),
                             elements = [  
                                 TextAscii(
@@ -799,7 +778,6 @@ register_check_parameters(
               ('xiaomi_params', Dictionary(
                title = "Xiaomi",
                help = _("XiaomiFlowerSens specific parameter"),
-               allow_empty = False,
                elements = [
                         ## fertility lower level
                         ( "level_fertility_min",
@@ -833,14 +811,12 @@ register_check_parameters(
               ('mqtt2_params', Dictionary(
                title = "MQTT2",
                help = _("MQTT2 specific parameter"),
-               allow_empty = False,
                elements = [
                        ## LWT - Der Letzte Wille, das Testament (reading)
                        ("var_lwt",
                          Alternative(
                             title = _('LWT (r: LWT)'),
                             style = "dropdown",
-                            allow_empty = False,
                             help = _("Check state of reading 'LWT' (default: ignore) "),
                             elements = [
                                 FixedValue(
@@ -869,7 +845,6 @@ register_check_parameters(
     TextAscii(
         title = _("fhem device"),
         help = _("Specify the name of the FHEM device, i.e. <tt>eg.bad.heizung</tt>"),
-        allow_empty = False,
         default_value = 0,
     ),
     "dict",
