@@ -2,7 +2,7 @@
 
 check_MK Plugin für FHEM
 
-Getestet mit CheckMK 1.6.0p3 (Stand: 10/2019)
+Getestet mit CheckMK 1.6.0p22 (Stand: 09/2021)
 
 FHEM-Forum: https://forum.fhem.de/index.php/topic,63723.0.html
 
@@ -19,7 +19,7 @@ FHEM-Forum: https://forum.fhem.de/index.php/topic,63723.0.html
 * Überwachung des Batterie-Status
 
 ## extended Feature
-* DewPoint-optimierte Ünerwachung (sofern in FHEM aktiviert)
+* DewPoint-optimierte Überwachung (sofern in FHEM aktiviert)
 * Unterschützung von HomeMatic-Channel
 
 ## Installation

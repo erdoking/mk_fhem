@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.9.5] - 2021-09-12
+### Changed
+ - Fix for WATO-Konfiguration on CheckMK 2.0 (thanks to f-zappa)
+ - Fix for lost HomeMatic-Devices after FHEM update (thanks to f-zappa)
+ - Add switch ignored for 'Control Mode' (thanks to gadget)
+
 ## [0.9.4] - 2019-10-21
 ### Changed
  - Fix for WATO-Konfiguration on CheckMK 1.6 (thanks to f-zappa) 
