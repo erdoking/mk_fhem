@@ -472,6 +472,10 @@ register_check_parameters(
                             title = _("auto"),
                         ),
                         FixedValue(
+                            'ignore',
+                            title = _("ignore"),
+                        ),
+                        FixedValue(
                             'manual',
                             totext = "manual",
                             title = _("manual"),
