@@ -10,7 +10,7 @@ my $fhem_outpout = `/opt/fhem/fhem.pl 7072 "jsonlist2 TYPE=.*:FILTER=state=..*:F
 
 ## special device types to be monitored
 ## normaly filtered out
-my @allowed_types = ( 'speedtest', 'CUL', 'JeeLink', 'TRAFFIC', 'WifiLight', 'harmony', 'XiaomiFlowerSens', 'XiaomiBTLESens' );
+my @allowed_types = ( 'CUL_HM', 'speedtest', 'CUL', 'JeeLink', 'TRAFFIC', 'WifiLight', 'harmony', 'XiaomiFlowerSens', 'XiaomiBTLESens' );
 
 my %devices;
 my $json = JSON->new;
