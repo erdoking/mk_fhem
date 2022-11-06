@@ -1,0 +1,116 @@
+/usr/lib/check_mk_agent/plugins/mk_fhem
+<<<fhem>>>
+Detected devices: XXXwp1 XXXwp2
+XXXwp1                                    XXXwp1                           TYPE                 LUXTRONIK2
+                     2022-11-06 16:30:04  XXXwp1                           2ndHeatSource1       off
+                     2022-11-06 16:30:04  XXXwp1                           ambientTemperature   14.0
+                     2022-11-06 16:30:04  XXXwp1                           averageAmbientTemperature 9.7
+                     2022-11-06 16:30:04  XXXwp1                           bivalentLevel        1
+                     2022-11-06 16:30:04  XXXwp1                           compressor1          on
+                     2022-11-06 16:30:04  XXXwp1                           counterHours2ndHeatSource1 145.1
+                     2022-11-06 16:30:04  XXXwp1                           counterHours2ndHeatSource2 5792.2
+                     2022-11-06 16:30:04  XXXwp1                           counterHoursHeatPump 38260.6
+                     2022-11-06 16:30:04  XXXwp1                           counterHoursHeating  4593.2
+                     2022-11-06 16:30:04  XXXwp1                           counterHoursHotWater 8396.3
+                     2022-11-06 16:30:04  XXXwp1                           delayDeviceTimeCalc  -4996
+                     2022-11-06 16:30:04  XXXwp1                           deviceTimeCalc       2022-11-06 17:53:21
+                     2022-11-06 16:30:04  XXXwp1                           durationFetchReadings 0.019
+                     2022-11-06 16:30:04  XXXwp1                           firmware             V1.86.2
+                     2022-11-06 16:30:04  XXXwp1                           flowTemperature      51.2
+                     2022-11-06 16:30:04  XXXwp1                           heatPumpElectricalPowerEstimated 0
+                     2022-11-06 16:21:04  XXXwp1                           heatSourceDefrostCounterAir 1
+                     2022-11-06 16:21:04  XXXwp1                           heatSourceDefrostLast Mode: air Time: 30:05 Amb: 14.5 - 14.5 hsIN: -50.0 - -50.0
+                     2022-11-03 08:31:56  XXXwp1                           heatSourceDefrostLastTimeout Amb: 11.4 hsIN: -50.0 hsOUT: -50.0
+                     2022-11-06 16:30:04  XXXwp1                           heatSourceDefrostTimer 0
+                     2022-11-06 16:30:04  XXXwp1                           heatSourceIN         -50.0
+                     2022-11-06 16:30:04  XXXwp1                           heatSourceMotor      on
+                     2022-11-06 16:30:04  XXXwp1                           heatSourceOUT        -50.0
+                     2022-11-06 16:30:04  XXXwp1                           heatingCurveEndPoint 36.0
+                     2022-11-06 16:30:04  XXXwp1                           heatingCurveOffset   22.0
+                     2022-11-06 04:16:10  XXXwp1                           heatingCycle         finished
+                     2022-11-06 16:30:04  XXXwp1                           heatingLimit         on
+                     2022-11-06 16:30:04  XXXwp1                           heatingSystemCircPump off
+                     2022-11-06 16:30:04  XXXwp1                           heatingSystemCircPumpDeaerate off
+                     2022-11-06 16:30:04  XXXwp1                           hotGasTemperature    75.0
+                     2022-11-06 16:30:04  XXXwp1                           hotWaterCircPumpDeaerate off
+                     2022-11-06 16:30:04  XXXwp1                           hotWaterCircPumpExtern on
+                     2022-11-06 16:30:04  XXXwp1                           hotWaterSwitchingValve off
+                     2022-11-06 16:30:04  XXXwp1                           hotWaterTemperature  51.6
+                     2022-11-06 16:30:04  XXXwp1                           hotWaterTemperatureTarget 51.0
+                     2022-11-06 16:30:04  XXXwp1                           opModeHeating        Automatik
+                     2022-11-06 16:30:04  XXXwp1                           opModeHotWater       Automatik
+                     2022-11-06 16:30:04  XXXwp1                           opStateHeatPump1     Wärmepumpe läuft
+                     2022-11-06 16:30:04  XXXwp1                           opStateHeatPump2     seit 00:03:54
+                     2022-11-06 16:30:04  XXXwp1                           opStateHeatPump3     Schwimmbad/Photovoltaik
+                     2022-11-06 16:30:04  XXXwp1                           opStateHeating       Heizgrenze (Soll 15.0°C)
+                     2022-11-06 16:30:04  XXXwp1                           opStateHotWater      Temp. OK
+                     2022-11-06 16:30:04  XXXwp1                           returnTemperature    49.3
+                     2022-11-06 16:30:04  XXXwp1                           returnTemperatureExtern 43.6
+                     2022-11-06 16:30:04  XXXwp1                           returnTemperatureHyst 2.0
+                     2022-11-06 16:30:04  XXXwp1                           returnTemperatureSetBack -1.0
+                     2022-11-06 16:30:04  XXXwp1                           returnTemperatureTarget 15.0
+                     2022-11-06 16:30:04  XXXwp1                           solarBufferTemperature 150.0
+                     2022-11-06 16:30:04  XXXwp1                           solarCollectorTemperature 5.0
+                     2022-11-06 16:30:04  XXXwp1                           solarPump            off
+                     2022-11-06 16:30:04  XXXwp1                           state                Wärmepumpe läuft seit 00:03:54 - Schwimmbad/Photovoltaik
+                     2022-11-06 16:30:04  XXXwp1                           thresholdHeatingLimit 9.0
+                     2022-11-06 16:30:04  XXXwp1                           thresholdTemperatureSetBack -10.0
+                     2022-11-06 16:30:04  XXXwp1                           typeHeatpump         L2G404
+                     2022-11-06 16:30:04  XXXwp1                           typeSerial           XXXX/XX-XXX
+                     2022-11-06 16:30:04  XXXwp1                           ventBOSUPCircPumpDeaerate off
+XXXwp2                                    XXXwp2                           TYPE                 LUXTRONIK2
+                     2022-11-06 16:30:09  XXXwp2                           2ndHeatSource1       off
+                     2022-11-06 16:30:09  XXXwp2                           ambientTemperature   13.9
+                     2022-11-06 16:30:09  XXXwp2                           averageAmbientTemperature 9.8
+                     2022-11-06 16:30:09  XXXwp2                           bivalentLevel        1
+                     2022-11-06 16:30:09  XXXwp2                           compressor1          off
+                     2022-11-06 16:30:09  XXXwp2                           counterHours2ndHeatSource1 372.3
+                     2022-11-06 16:30:09  XXXwp2                           counterHours2ndHeatSource2 1347.2
+                     2022-11-06 16:30:09  XXXwp2                           counterHoursHeatPump 18453.5
+                     2022-11-06 16:30:09  XXXwp2                           counterHoursHeating  3568.2
+                     2022-11-06 16:30:09  XXXwp2                           counterHoursHotWater 14881.2
+                     2022-11-06 16:30:09  XXXwp2                           delayDeviceTimeCalc  -3158
+                     2022-11-06 16:30:09  XXXwp2                           deviceTimeCalc       2022-11-06 17:22:48
+                     2022-11-06 16:30:09  XXXwp2                           durationFetchReadings 0.016
+                     2022-11-06 16:30:09  XXXwp2                           firmware             V1.86.2
+                     2022-11-06 16:30:09  XXXwp2                           flowTemperature      27.2
+                     2022-11-06 16:30:09  XXXwp2                           heatPumpElectricalPowerEstimated 0
+                     2022-11-06 08:28:02  XXXwp2                           heatSourceDefrostLast Mode: air Time: 09:05 Amb: 6.6 - 6.7 hsIN: -50.0 - -50.0
+                     2022-04-20 07:27:28  XXXwp2                           heatSourceDefrostLastTimeout Amb: 4.0 hsIN: -50.0 hsOUT: -50.0
+                     2022-11-06 16:30:09  XXXwp2                           heatSourceDefrostTimer 111
+                     2022-11-06 16:30:09  XXXwp2                           heatSourceIN         -50.0
+                     2022-11-06 16:30:09  XXXwp2                           heatSourceMotor      off
+                     2022-11-06 16:30:09  XXXwp2                           heatSourceOUT        -50.0
+                     2022-11-06 16:30:09  XXXwp2                           heatingCurveEndPoint 36.0
+                     2022-11-06 16:30:09  XXXwp2                           heatingCurveOffset   22.0
+                     2022-11-06 05:07:20  XXXwp2                           heatingCycle         finished
+                     2022-11-06 16:30:09  XXXwp2                           heatingLimit         on
+                     2022-11-06 16:30:09  XXXwp2                           heatingSystemCircPump on
+                     2022-11-06 16:30:09  XXXwp2                           heatingSystemCircPumpDeaerate off
+                     2022-11-06 16:30:09  XXXwp2                           hotGasTemperature    19.3
+                     2022-11-06 16:30:09  XXXwp2                           hotWaterCircPumpDeaerate off
+                     2022-11-06 16:30:09  XXXwp2                           hotWaterCircPumpExtern off
+                     2022-11-06 16:30:09  XXXwp2                           hotWaterSwitchingValve off
+                     2022-11-06 16:30:09  XXXwp2                           hotWaterTemperature  51.5
+                     2022-11-06 16:30:09  XXXwp2                           hotWaterTemperatureTarget 45.0
+                     2022-11-06 16:30:09  XXXwp2                           opModeHeating        Automatik
+                     2022-11-06 16:30:09  XXXwp2                           opModeHotWater       Automatik
+                     2022-11-06 16:30:09  XXXwp2                           opStateHeatPump1     Wärmepumpe steht
+                     2022-11-06 16:30:09  XXXwp2                           opStateHeatPump2     seit 08:02:27
+                     2022-11-06 16:30:09  XXXwp2                           opStateHeatPump3     Keine Anforderung
+                     2022-11-06 16:30:09  XXXwp2                           opStateHeating       Abgesenkt -2.0°C
+                     2022-11-06 16:30:09  XXXwp2                           opStateHotWater      Temp. OK
+                     2022-11-06 16:30:09  XXXwp2                           returnTemperature    25.0
+                     2022-11-06 16:30:09  XXXwp2                           returnTemperatureExtern 43.4
+                     2022-11-06 16:30:09  XXXwp2                           returnTemperatureHeating 25.0
+                     2022-11-06 16:30:09  XXXwp2                           returnTemperatureHyst 1.5
+                     2022-11-06 16:30:09  XXXwp2                           returnTemperatureSetBack -0.5
+                     2022-11-06 16:30:09  XXXwp2                           returnTemperatureTarget 24.6
+                     2018-06-25 22:32:41  XXXwp2                           solarBufferTemperature 150.0
+                     2018-06-25 22:32:41  XXXwp2                           solarCollectorTemperature 5.0
+                     2022-11-06 16:30:09  XXXwp2                           state                Wärmepumpe steht seit 08:02:27 - Keine Anforderung
+                     2022-11-06 16:30:09  XXXwp2                           thresholdHeatingLimit 14.0
+                     2022-11-06 16:30:09  XXXwp2                           thresholdTemperatureSetBack -10.0
+                     2022-11-06 16:30:09  XXXwp2                           typeHeatpump         L2G404
+                     2022-11-06 16:30:09  XXXwp2                           typeSerial           XXXX/XX-XXX
+                     2022-11-06 16:30:09  XXXwp2                           ventBOSUPCircPumpDeaerate off
