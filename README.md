@@ -32,6 +32,15 @@ FHEM-Forum: https://forum.fhem.de/index.php/topic,63723.0.html
 * ggf. telnet Passwort/Port anpassen
   * vi /usr/lib/check_mk_agent/plugins/mk_fhem
 
+## Supported readings
+https://github.com/erdoking/mk_fhem/wiki
+### Luxtronik 2.0
+https://wiki.fhem.de/wiki/Luxtronik_2.0
+
+_Getestet mit_
+* WP Typ: LW 310A, Kodierung: L2G404 (Luxtronik 2.0)
+* Softwarestand V1.86.2 (latest; Stand 11/2022)
+
 ## ToDo
 * Einbindung weiterer Geräte/Hersteller
 * Perf-O-Meter
